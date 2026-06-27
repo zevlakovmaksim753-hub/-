@@ -185,35 +185,46 @@
 
     .universe-stage {
       position: relative;
-      width: 420px; height: 360px;
+      width: 490px; height: 400px;
       flex-shrink: 0;
     }
+
+    /* entity buttons base */
+    .entity-wrap { position: relative; }
 
     /* dashed orbit ring */
     .orbit-ring {
       position: absolute;
-      width: 278px; height: 278px;
-      border: 1px dashed rgba(245,196,0,.18);
+      width: 330px; height: 330px;
+      border: 2px dashed rgba(245,196,0,.25);
       border-radius: 50%;
-      left: 71px; top: 61px;
+      left: 95px; top: 55px;
       pointer-events: none;
       animation: slowSpin 40s linear infinite;
+      box-shadow: 0 0 30px rgba(245,196,0,.06) inset;
     }
     @keyframes slowSpin { to { transform: rotate(360deg); } }
 
     /* CENTER – Биргапчол 210×210 */
+    /* orbit radius 165px, cx=260, cy=220 */
     .universe-center {
-      position: absolute;
-      left: 105px; top: 75px;
+      position: absolute !important;
+      left: 155px; top: 110px;
     }
 
-    /* ORBIT items 110×110 */
-    .orbit-pchol    { position: absolute; left: 155px; top:  5px; }
-    .orbit-korova   { position: absolute; left:  32px; top: 205px; }
-    .orbit-birgamot { position: absolute; left: 278px; top: 205px; }
-
-    /* entity buttons base */
-    .entity-wrap { position: relative; }
+    /* ORBIT items 110×110 — must come after .entity-wrap */
+    .universe-stage .orbit-pchol {
+      position: absolute;
+      left: 205px; top: 10px;
+    }
+    .universe-stage .orbit-korova {
+      position: absolute;
+      left: 60px; top: 252px;
+    }
+    .universe-stage .orbit-birgamot {
+      position: absolute;
+      left: 350px; top: 252px;
+    }
 
     .entity-btn {
       display: flex; flex-direction: column;
@@ -283,7 +294,7 @@
 
     .members-list {
       display: flex; flex-direction: column; gap: .75rem;
-      width: 100%; max-width: 460px;
+      width: 100%; max-width: 780px;
     }
 
     .member-card {
@@ -440,7 +451,7 @@
       <!-- CENTER: Биргапчол -->
       <div class="entity-wrap universe-center">
         <div class="entity-tooltip">Биргапчол 👁️</div>
-        <button class="entity-btn big" onclick="enterApp()">
+        <button class="entity-btn big" onclick="enterApp('bog')">
           <span class="btn-label">Биргапчол</span>
           <span class="btn-emoji">👁️</span>
         </button>
@@ -449,7 +460,7 @@
       <!-- TOP: Пчол -->
       <div class="entity-wrap orbit-pchol">
         <div class="entity-tooltip">Пчол 🐝</div>
-        <button class="entity-btn orbit-btn" onclick="enterApp()">
+        <button class="entity-btn orbit-btn" onclick="enterApp('silnye')">
           <span class="btn-label">Пчол</span>
           <span class="btn-emoji">🐝</span>
         </button>
@@ -458,7 +469,7 @@
       <!-- BOTTOM-LEFT: Корова -->
       <div class="entity-wrap orbit-korova">
         <div class="entity-tooltip">Муууу 🐮</div>
-        <button class="entity-btn orbit-btn" onclick="enterApp()">
+        <button class="entity-btn orbit-btn" onclick="enterApp('silnye')">
           <span class="btn-label">Корова</span>
           <span class="btn-emoji">🐮</span>
         </button>
@@ -467,7 +478,7 @@
       <!-- BOTTOM-RIGHT: Биргамот -->
       <div class="entity-wrap orbit-birgamot">
         <div class="entity-tooltip"><span class="fa2">🦛🍵</span><span class="fb2" style="display:none">🍵🦛</span></div>
-        <button class="entity-btn orbit-btn" onclick="enterApp()">
+        <button class="entity-btn orbit-btn" onclick="enterApp('silnye')">
           <span class="btn-label">Биргамот</span>
           <span class="btn-emoji">🦛</span>
         </button>
@@ -576,9 +587,16 @@
 
 
 <script>
-  function enterApp() {
+  function enterApp(tab) {
     document.getElementById('landing').style.display = 'none';
     document.getElementById('app').style.display = 'block';
+    if (tab) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById('tab-' + tab).classList.add('active');
+      const btn = document.querySelector('[onclick="openTab(\'' + tab + '\',this)"]');
+      if (btn) btn.classList.add('active');
+    }
   }
 
   function exitApp() {
