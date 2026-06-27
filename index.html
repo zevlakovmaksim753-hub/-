@@ -144,16 +144,19 @@
   .uni-section {
     padding: 3.5rem 2rem 5rem;
     display: flex; flex-direction: column; align-items: center;
-    background: var(--bg); border-bottom: 1px solid var(--border);
-    overflow: visible;
+    background: linear-gradient(180deg, #08080b 0%, var(--bg) 100%);
+    border-bottom: 1px solid var(--border);
+    position: relative; overflow: hidden;
   }
-  .uni-heading { font-size: clamp(1.3rem,2.5vw,1.8rem); font-weight: 800; margin-bottom: .4rem; text-align: center; }
-  .uni-sub { font-size: .87rem; color: var(--muted); margin-bottom: 3rem; text-align: center; }
+  [data-theme="light"] .uni-section { background: linear-gradient(180deg, #e8e8ef 0%, var(--bg) 100%); }
+  .uni-stars { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
+  .uni-heading { font-size: clamp(1.3rem,2.5vw,1.8rem); font-weight: 800; margin-bottom: .4rem; text-align: center; position: relative; z-index: 1; }
+  .uni-sub { font-size: .87rem; color: var(--muted); margin-bottom: 3rem; text-align: center; position: relative; z-index: 1; }
 
   /* STAGE */
   .universe-stage {
-    position: relative;
-    width: 500px; height: 500px;
+    position: relative; z-index: 1;
+    width: 420px; height: 420px;
     flex-shrink: 0;
     overflow: visible;
   }
@@ -169,14 +172,14 @@
     border-radius: 50%; pointer-events: none; z-index: 1;
     border: 1.5px dashed rgba(245,196,0,.18);
   }
-  /* Ring 1: radius 170px */
-  .or1 { width: 340px; height: 340px; margin: -170px 0 0 -170px; }
-  /* Ring 2: radius 255px */
-  .or2 { width: 510px; height: 510px; margin: -255px 0 0 -255px; }
-  /* Ring 3: radius 340px */
-  .or3 { width: 680px; height: 680px; margin: -340px 0 0 -340px; }
-  /* Ring 4: radius 425px — empty, subtle */
-  .or4 { width: 850px; height: 850px; margin: -425px 0 0 -425px; border-color: rgba(245,196,0,.07); }
+  /* Ring 1: radius 135px */
+  .or1 { width: 270px; height: 270px; margin: -135px 0 0 -135px; }
+  /* Ring 2: radius 200px */
+  .or2 { width: 400px; height: 400px; margin: -200px 0 0 -200px; }
+  /* Ring 3: radius 270px */
+  .or3 { width: 540px; height: 540px; margin: -270px 0 0 -270px; }
+  /* Ring 4: radius 340px — empty, subtle */
+  .or4 { width: 680px; height: 680px; margin: -340px 0 0 -340px; border-color: rgba(245,196,0,.07); }
 
   /* ── ORBIT TRACKS ── */
   .orbit-track {
@@ -198,15 +201,15 @@
   /* slots */
   .orbit-slot { position: absolute; }
 
-  /* Ring 1 items: 75×75, radius 170px — top = -(radius + height/2) to center on ring */
-  .s1 { top: -208px; left: -38px; width: 75px; height: 75px; animation: oUnspin 22s linear infinite; }
+  /* Ring 1 items: 60×60, radius 135px — top = -(radius + height/2) */
+  .s1 { top: -165px; left: -30px; width: 60px; height: 60px; animation: oUnspin 22s linear infinite; }
   .r1b .s1 { animation-delay: -11s; }
 
-  /* Ring 2 items: 82×82, radius 255px */
-  .s2 { top: -296px; left: -41px; width: 82px; height: 82px; animation: oUnspin 30s linear infinite; }
+  /* Ring 2 items: 65×65, radius 200px */
+  .s2 { top: -233px; left: -33px; width: 65px; height: 65px; animation: oUnspin 30s linear infinite; }
 
-  /* Ring 3 items: 82×82, radius 340px */
-  .s3 { top: -381px; left: -41px; width: 82px; height: 82px; animation: oUnspin 38s linear infinite; }
+  /* Ring 3 items: 65×65, radius 270px */
+  .s3 { top: -303px; left: -33px; width: 65px; height: 65px; animation: oUnspin 38s linear infinite; }
 
   /* pause ALL orbits when hovering any item */
   .universe-stage.paused .orbit-track,
@@ -238,17 +241,17 @@
     color: var(--accent);
   }
 
-  .entity-btn.center { width: 150px; height: 150px; font-size: .95rem; border-color: rgba(245,196,0,.6); box-shadow: 0 0 28px rgba(245,196,0,.22), 0 4px 20px rgba(0,0,0,.4); border-radius: 20px; }
-  .entity-btn.center .btn-emoji { font-size: 3.2rem; }
+  .entity-btn.center { width: 120px; height: 120px; font-size: .85rem; border-color: rgba(245,196,0,.6); box-shadow: 0 0 28px rgba(245,196,0,.22), 0 4px 20px rgba(0,0,0,.4); border-radius: 18px; }
+  .entity-btn.center .btn-emoji { font-size: 2.6rem; }
 
-  .entity-btn.r1btn { width: 75px; height: 75px; font-size: .7rem; border-radius: 13px; gap: .3rem; }
-  .entity-btn.r1btn .btn-emoji { font-size: 1.6rem; }
+  .entity-btn.r1btn { width: 60px; height: 60px; font-size: .62rem; border-radius: 11px; gap: .25rem; }
+  .entity-btn.r1btn .btn-emoji { font-size: 1.35rem; }
 
-  .entity-btn.r2btn { width: 82px; height: 82px; font-size: .72rem; border-radius: 14px; gap: .35rem; }
-  .entity-btn.r2btn .btn-emoji { font-size: 1.8rem; }
+  .entity-btn.r2btn { width: 65px; height: 65px; font-size: .64rem; border-radius: 12px; gap: .28rem; }
+  .entity-btn.r2btn .btn-emoji { font-size: 1.5rem; }
 
-  .entity-btn.r3btn { width: 82px; height: 82px; font-size: .72rem; border-radius: 14px; gap: .35rem; }
-  .entity-btn.r3btn .btn-emoji { font-size: 1.8rem; }
+  .entity-btn.r3btn { width: 65px; height: 65px; font-size: .64rem; border-radius: 12px; gap: .28rem; }
+  .entity-btn.r3btn .btn-emoji { font-size: 1.5rem; }
 
   /* app tab size */
   .entity-btn.tab-size { width: 170px; height: 170px; font-size: 1rem; border-radius: 20px; }
@@ -435,6 +438,7 @@
 
   <!-- UNIVERSE — 4 concentric orbits -->
   <section id="universe" class="uni-section">
+    <div class="uni-stars" id="uni-stars"></div>
     <h2 class="uni-heading">Существа Базы:</h2>
     <p class="uni-sub">Нажмите на существо, чтобы перейти к нему</p>
 
@@ -591,13 +595,16 @@
 
 <script>
   /* stars */
-  const sc = document.getElementById('stars');
-  for (let i = 0; i < 50; i++) {
-    const s = document.createElement('div'); s.className = 'star';
-    const z = 1 + Math.random() * 2;
-    s.style.cssText = `width:${z}px;height:${z}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${2+Math.random()*4}s;--dl:-${Math.random()*5}s`;
-    sc.appendChild(s);
+  function makeStars(container, count) {
+    for (let i = 0; i < count; i++) {
+      const s = document.createElement('div'); s.className = 'star';
+      const z = 1 + Math.random() * 2.5;
+      s.style.cssText = `width:${z}px;height:${z}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${2+Math.random()*4}s;--dl:-${Math.random()*6}s`;
+      container.appendChild(s);
+    }
   }
+  makeStars(document.getElementById('stars'), 50);
+  makeStars(document.getElementById('uni-stars'), 80);
 
   function enterApp(tab) {
     document.getElementById('landing').style.display = 'none';
