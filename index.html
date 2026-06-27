@@ -190,8 +190,9 @@
     transform-origin: 0 0;
     z-index: 3;
   }
-  .orbit-track.t2 { animation-delay: calc(-20s / 3); }
-  .orbit-track.t3 { animation-delay: calc(-20s * 2 / 3); }
+  .orbit-track.t2 { animation-delay: calc(-20s / 4); }
+  .orbit-track.t3 { animation-delay: calc(-20s * 2 / 4); }
+  .orbit-track.t4 { animation-delay: calc(-20s * 3 / 4); }
 
   @keyframes orbitSpin { to { transform: rotate(360deg); } }
 
@@ -204,8 +205,9 @@
     height: 110px;
     animation: orbitUnspin 20s linear infinite;
   }
-  .orbit-track.t2 .orbit-slot { animation-delay: calc(-20s / 3); }
-  .orbit-track.t3 .orbit-slot { animation-delay: calc(-20s * 2 / 3); }
+  .orbit-track.t2 .orbit-slot { animation-delay: calc(-20s / 4); }
+  .orbit-track.t3 .orbit-slot { animation-delay: calc(-20s * 2 / 4); }
+  .orbit-track.t4 .orbit-slot { animation-delay: calc(-20s * 3 / 4); }
 
   @keyframes orbitUnspin { to { transform: rotate(-360deg); } }
 
@@ -546,7 +548,7 @@
         </div>
       </div>
 
-      <!-- Корова — track 3 (240°) -->
+      <!-- Корова — track 3 (180°) -->
       <div class="orbit-track t3">
         <div class="orbit-slot">
           <div class="entity-wrap">
@@ -554,6 +556,19 @@
             <button class="entity-btn orbit-btn" onclick="enterApp('silnye')">
               <span class="btn-label">Корова</span>
               <span class="btn-emoji">🐮</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Шпрот — track 4 (270°) -->
+      <div class="orbit-track t4">
+        <div class="orbit-slot">
+          <div class="entity-wrap">
+            <div class="entity-tooltip">🐋🐋🐋</div>
+            <button class="entity-btn orbit-btn" onclick="enterApp('ostalnie')">
+              <span class="btn-label">Шпрот</span>
+              <span class="btn-emoji">🐋</span>
             </button>
           </div>
         </div>
@@ -673,8 +688,16 @@
   </div>
 
   <div class="tab-content" id="tab-ostalnie">
-    <div class="tab-label"><h2>Остальные</h2><p>Тут тоже кое-что будет</p></div>
-    <div class="soon-wrap"><span class="soon-text">скоро...</span><div class="soon-emoji">🌀</div></div>
+    <div class="tab-label"><h2>Остальные</h2><p>Не самые сильные, но тоже важные</p></div>
+    <div class="entities-grid">
+      <div class="entity-wrap">
+        <div class="entity-tooltip">🐋🐋🐋</div>
+        <button class="entity-btn tab-size">
+          <span class="btn-label">Шпрот</span>
+          <span class="btn-emoji">🐋</span>
+        </button>
+      </div>
+    </div>
   </div>
 
 </div><!-- /app -->
