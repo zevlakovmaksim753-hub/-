@@ -3,19 +3,20 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>База Wiki — Корова, Пчол и Биргамот</title>
-  <meta name="description" content="База Wiki — место где живут корова, пчол и биргамот."/>
+  <title>База Wiki</title>
+  <meta name="description" content="База Wiki — место где живут корова, пчол, биргамот и шпрот."/>
   <meta name="robots" content="index, follow"/>
   <link rel="canonical" href="https://zevlakovmaksim753-hub.github.io/-/"/>
   <meta property="og:type" content="website"/>
   <meta property="og:title" content="База Wiki"/>
   <meta property="og:url" content="https://zevlakovmaksim753-hub.github.io/-/"/>
-  <!-- Consistent emoji on all platforms via Twemoji -->
+
+  <!-- Apple emoji on ALL platforms -->
   <script src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js" crossorigin="anonymous"></script>
   <style>
     img.emoji {
       height: 1.1em; width: 1.1em;
-      margin: 0 .03em; vertical-align: -0.18em;
+      margin: 0 .03em; vertical-align: -0.15em;
       display: inline-block; pointer-events: none;
     }
     .btn-emoji img.emoji { height: 1em; width: 1em; margin: 0; vertical-align: middle; }
@@ -48,79 +49,66 @@
   #landing { display: block; }
   #app     { display: none; }
 
-  /* ══════════════ NAV ══════════════ */
+  /* ══ NAV ══ */
   .nav {
     position: sticky; top: 0; z-index: 300;
-    height: 62px;
-    background: var(--nav-bg);
+    height: 62px; background: var(--nav-bg);
     backdrop-filter: blur(18px);
     border-bottom: 1px solid var(--border);
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    padding: 0 2.5rem;
-    gap: 1.5rem;
+    display: grid; grid-template-columns: auto 1fr auto;
+    align-items: center; padding: 0 2.5rem; gap: 1.5rem;
     transition: background .25s;
   }
-
   .nav-logo { display: flex; align-items: center; gap: .7rem; }
   .nav-logo-icon {
-    width: 38px; height: 38px;
-    background: var(--accent); border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.1rem; font-weight: 900; color: #111;
-    flex-shrink: 0; box-shadow: 0 0 16px rgba(245,196,0,.4);
-    letter-spacing: 0;
+    width: 38px; height: 38px; background: var(--accent);
+    border-radius: 10px; display: flex; align-items: center;
+    justify-content: center; font-size: 1.1rem; font-weight: 900;
+    color: #111; flex-shrink: 0; box-shadow: 0 0 16px rgba(245,196,0,.4);
   }
   .nav-logo-name { font-size: 1.05rem; font-weight: 900; letter-spacing: .06em; line-height: 1.1; }
   .nav-logo-sub  { font-size: .6rem; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; }
 
   .nav-links { display: flex; justify-content: center; gap: .1rem; }
   .nav-link {
-    padding: .45rem .95rem; font-size: .87rem; font-weight: 500;
+    padding: .45rem .9rem; font-size: .87rem; font-weight: 500;
     color: var(--text2); border-radius: 8px; cursor: pointer;
-    background: none; border: none;
-    transition: color .15s, background .15s; white-space: nowrap;
+    background: none; border: none; white-space: nowrap;
+    transition: color .15s, background .15s;
   }
   .nav-link:hover { color: var(--text); background: rgba(255,255,255,.06); }
   [data-theme="light"] .nav-link:hover { background: rgba(0,0,0,.05); }
 
-  .nav-actions { display: flex; align-items: center; gap: .55rem; }
-
-  .nav-btn {
-    padding: .48rem 1.1rem; font-size: .84rem; font-weight: 700;
-    border-radius: 10px; cursor: pointer; letter-spacing: .02em;
-    transition: all .2s; white-space: nowrap;
-  }
-  .nav-btn-ghost {
-    background: transparent; color: var(--muted);
-    border: 1px solid var(--border); cursor: not-allowed;
-  }
-  .nav-btn-ghost .s { font-size: .64rem; background: var(--surface2); color: var(--muted); padding: 1px 6px; border-radius: 99px; margin-left: .3rem; }
-  .nav-btn-primary { background: var(--accent); color: #111; border: none; box-shadow: 0 0 14px rgba(245,196,0,.3); }
-  .nav-btn-primary:hover { background: var(--accent-h); box-shadow: 0 0 26px rgba(245,196,0,.5); transform: translateY(-1px); }
-
+  .nav-actions { display: flex; align-items: center; gap: .5rem; }
   .nav-theme { display: flex; gap: .25rem; margin-right: .1rem; }
   .nth {
     width: 28px; height: 28px; border-radius: 50%;
     border: 2px solid transparent; cursor: pointer;
-    display: flex; align-items: center; justify-content: center; font-size: .76rem;
-    transition: border-color .18s, transform .14s;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .76rem; transition: border-color .18s, transform .14s;
   }
   .nth:hover { transform: scale(1.15); }
   .nth.active { border-color: var(--accent); }
   .nth.dark-btn  { background: #111; }
   .nth.light-btn { background: #eee; }
 
+  .nav-btn {
+    padding: .48rem 1.1rem; font-size: .84rem; font-weight: 700;
+    border-radius: 10px; cursor: pointer; white-space: nowrap;
+    transition: all .2s;
+  }
+  .nav-btn-ghost  { background: transparent; color: var(--muted); border: 1px solid var(--border); cursor: not-allowed; }
+  .nav-btn-ghost .s { font-size: .62rem; background: var(--surface2); color: var(--muted); padding: 1px 6px; border-radius: 99px; margin-left: .3rem; }
+  .nav-btn-primary { background: var(--accent); color: #111; border: none; box-shadow: 0 0 14px rgba(245,196,0,.3); }
+  .nav-btn-primary:hover { background: var(--accent-h); box-shadow: 0 0 26px rgba(245,196,0,.5); transform: translateY(-1px); }
 
-  /* ══════════════ ABOUT / DESCRIPTION ══════════════ */
+  /* ══ ABOUT ══ */
   .about {
     padding: 5rem 2rem 4rem;
     background: linear-gradient(180deg, #0a0a0d 0%, var(--bg) 100%);
     border-bottom: 1px solid var(--border);
     position: relative; overflow: hidden;
   }
-  /* subtle stars behind description */
   .about-stars { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
   .star {
     position: absolute; border-radius: 50%;
@@ -129,11 +117,7 @@
   }
   @keyframes twinkle { 0%,100%{opacity:.1;transform:scale(1)} 50%{opacity:.8;transform:scale(1.5)} }
 
-  .about-inner {
-    position: relative; z-index: 1;
-    max-width: 900px; margin: 0 auto;
-    display: flex; gap: 3rem; align-items: center;
-  }
+  .about-inner { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; display: flex; gap: 3rem; align-items: center; }
   .about-text { flex: 1; }
   .about-title { font-size: clamp(1.6rem,3.5vw,2.4rem); font-weight: 800; margin-bottom: 1.1rem; line-height: 1.15; }
   .about-desc  { font-size: .97rem; color: var(--text2); line-height: 1.85; margin-bottom: 1.2rem; }
@@ -149,94 +133,95 @@
   }
   .about-btn:hover { background: var(--accent-h); box-shadow: 0 0 36px rgba(245,196,0,.6); transform: translateY(-2px); }
   .about-pic {
-    flex-shrink: 0; width: 260px; height: 200px;
+    flex-shrink: 0; width: 240px; height: 190px;
     background: var(--surface2); border: 1px solid var(--border);
     border-radius: 18px; display: flex; align-items: center;
-    justify-content: center; font-size: 5.5rem; overflow: hidden; position: relative;
+    justify-content: center; font-size: 5rem; overflow: hidden; position: relative;
   }
-  .about-pic::after {
-    content: ''; position: absolute; inset: 0;
-    background: radial-gradient(circle at 50% 100%, rgba(245,196,0,.1), transparent 70%);
-  }
+  .about-pic::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 100%, rgba(245,196,0,.1), transparent 70%); }
 
-  /* ══════════════ UNIVERSE SECTION ══════════════ */
+  /* ══ UNIVERSE SECTION ══ */
   .uni-section {
-    padding: 3.5rem 2rem 4rem;
+    padding: 3.5rem 2rem 5rem;
     display: flex; flex-direction: column; align-items: center;
-    background: var(--bg);
-    border-bottom: 1px solid var(--border);
+    background: var(--bg); border-bottom: 1px solid var(--border);
+    overflow: visible;
   }
   .uni-heading { font-size: clamp(1.3rem,2.5vw,1.8rem); font-weight: 800; margin-bottom: .4rem; text-align: center; }
-  .uni-sub { font-size: .87rem; color: var(--muted); margin-bottom: 2.5rem; text-align: center; }
+  .uni-sub { font-size: .87rem; color: var(--muted); margin-bottom: 3rem; text-align: center; }
 
   /* STAGE */
   .universe-stage {
     position: relative;
-    width: 600px; height: 600px;
+    width: 500px; height: 500px;
     flex-shrink: 0;
+    overflow: visible;
   }
 
   .universe-center {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 5;
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%); z-index: 5;
   }
 
+  /* ── 4 ORBIT RINGS (visual) ── */
   .orbit-ring {
-    position: absolute;
-    top: 50%; left: 50%;
-    width: 480px; height: 480px;
-    margin: -240px 0 0 -240px;
-    border: 2px dashed rgba(245,196,0,.22);
-    border-radius: 50%;
-    pointer-events: none; z-index: 1;
-    box-shadow: 0 0 50px rgba(245,196,0,.05) inset;
+    position: absolute; top: 50%; left: 50%;
+    border-radius: 50%; pointer-events: none; z-index: 1;
+    border: 1.5px dashed rgba(245,196,0,.18);
   }
+  /* Ring 1: radius 170px */
+  .or1 { width: 340px; height: 340px; margin: -170px 0 0 -170px; }
+  /* Ring 2: radius 255px */
+  .or2 { width: 510px; height: 510px; margin: -255px 0 0 -255px; }
+  /* Ring 3: radius 340px */
+  .or3 { width: 680px; height: 680px; margin: -340px 0 0 -340px; }
+  /* Ring 4: radius 425px — empty, subtle */
+  .or4 { width: 850px; height: 850px; margin: -425px 0 0 -425px; border-color: rgba(245,196,0,.07); }
 
-  /* orbit tracks — radius 240px */
+  /* ── ORBIT TRACKS ── */
   .orbit-track {
     position: absolute; top: 50%; left: 50%;
-    width: 0; height: 0;
-    animation: orbitSpin 24s linear infinite;
-    transform-origin: 0 0; z-index: 3;
+    width: 0; height: 0; transform-origin: 0 0; z-index: 3;
   }
-  /* 4 items at 0°, 90°, 180°, 270° */
-  .orbit-track.t2 { animation-delay: calc(-24s / 4); }
-  .orbit-track.t3 { animation-delay: calc(-24s * 2 / 4); }
-  .orbit-track.t4 { animation-delay: calc(-24s * 3 / 4); }
 
-  @keyframes orbitSpin { to { transform: rotate(360deg); } }
+  /* Ring 1 — 22s — Биргамот (0°) + Пчол (180°) */
+  .r1a { animation: oSpin 22s linear infinite; }
+  .r1b { animation: oSpin 22s linear infinite; animation-delay: -11s; }
+  /* Ring 2 — 30s — Корова */
+  .r2a { animation: oSpin 30s linear infinite; }
+  /* Ring 3 — 38s — Шпрот */
+  .r3a { animation: oSpin 38s linear infinite; }
 
-  .orbit-slot {
-    position: absolute;
-    top: -240px;    /* orbit radius */
-    left: -55px;    /* half of 110px */
-    width: 110px; height: 110px;
-    animation: orbitUnspin 24s linear infinite;
-  }
-  .orbit-track.t2 .orbit-slot { animation-delay: calc(-24s / 4); }
-  .orbit-track.t3 .orbit-slot { animation-delay: calc(-24s * 2 / 4); }
-  .orbit-track.t4 .orbit-slot { animation-delay: calc(-24s * 3 / 4); }
+  @keyframes oSpin   { to { transform: rotate(360deg);  } }
+  @keyframes oUnspin { to { transform: rotate(-360deg); } }
 
-  @keyframes orbitUnspin { to { transform: rotate(-360deg); } }
+  /* slots */
+  .orbit-slot { position: absolute; }
+
+  /* Ring 1 items: 75×75, radius 170px */
+  .s1 { top: -170px; left: -37px; width: 75px; height: 75px; animation: oUnspin 22s linear infinite; }
+  .r1b .s1 { animation-delay: -11s; }
+
+  /* Ring 2 items: 82×82, radius 255px */
+  .s2 { top: -255px; left: -41px; width: 82px; height: 82px; animation: oUnspin 30s linear infinite; }
+
+  /* Ring 3 items: 82×82, radius 340px */
+  .s3 { top: -340px; left: -41px; width: 82px; height: 82px; animation: oUnspin 38s linear infinite; }
 
   /* pause ALL orbits when hovering any item */
-  .universe-stage.orbit-paused .orbit-track,
-  .universe-stage.orbit-paused .orbit-slot { animation-play-state: paused; }
-  .orbit-track:hover .entity-tooltip { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .universe-stage.paused .orbit-track,
+  .universe-stage.paused .orbit-slot { animation-play-state: paused; }
 
-
-  /* ══════════════ ENTITY BUTTONS ══════════════ */
+  /* ══ ENTITY BUTTONS ══ */
   .entity-wrap { position: relative; }
 
   .entity-btn {
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
-    gap: .6rem; font-weight: 800; letter-spacing: .05em;
+    gap: .55rem; font-weight: 800; letter-spacing: .05em;
     color: var(--text); background: var(--surface2);
     border: 2px solid rgba(245,196,0,.38);
-    border-radius: 18px; cursor: pointer;
+    border-radius: 16px; cursor: pointer;
     transition: all .25s; position: relative; overflow: hidden;
     box-shadow: 0 0 10px rgba(245,196,0,.07), 0 2px 14px rgba(0,0,0,.3);
   }
@@ -248,19 +233,24 @@
   .entity-btn:hover::before { opacity: 1; }
   .entity-btn:hover {
     border-color: var(--accent);
-    box-shadow: 0 0 24px rgba(245,196,0,.45), 0 0 60px rgba(245,196,0,.14), 0 8px 30px rgba(0,0,0,.4);
-    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 0 22px rgba(245,196,0,.45), 0 0 55px rgba(245,196,0,.13), 0 8px 28px rgba(0,0,0,.4);
+    transform: translateY(-3px) scale(1.06);
     color: var(--accent);
   }
 
-  .entity-btn.big {
-    width: 200px; height: 200px; font-size: 1rem;
-    border-color: rgba(245,196,0,.6);
-    box-shadow: 0 0 28px rgba(245,196,0,.22), 0 4px 20px rgba(0,0,0,.4);
-  }
-  .entity-btn.big .btn-emoji { font-size: 3.6rem; }
-  .entity-btn.orbit-btn { width: 110px; height: 110px; font-size: .8rem; border-radius: 16px; }
-  .entity-btn.orbit-btn .btn-emoji { font-size: 2rem; }
+  .entity-btn.center { width: 150px; height: 150px; font-size: .95rem; border-color: rgba(245,196,0,.6); box-shadow: 0 0 28px rgba(245,196,0,.22), 0 4px 20px rgba(0,0,0,.4); border-radius: 20px; }
+  .entity-btn.center .btn-emoji { font-size: 3.2rem; }
+
+  .entity-btn.r1btn { width: 75px; height: 75px; font-size: .7rem; border-radius: 13px; gap: .3rem; }
+  .entity-btn.r1btn .btn-emoji { font-size: 1.6rem; }
+
+  .entity-btn.r2btn { width: 82px; height: 82px; font-size: .72rem; border-radius: 14px; gap: .35rem; }
+  .entity-btn.r2btn .btn-emoji { font-size: 1.8rem; }
+
+  .entity-btn.r3btn { width: 82px; height: 82px; font-size: .72rem; border-radius: 14px; gap: .35rem; }
+  .entity-btn.r3btn .btn-emoji { font-size: 1.8rem; }
+
+  /* app tab size */
   .entity-btn.tab-size { width: 170px; height: 170px; font-size: 1rem; border-radius: 20px; }
   .entity-btn.tab-size .btn-emoji { font-size: 3rem; }
 
@@ -268,44 +258,33 @@
   .btn-emoji  { line-height: 1; transition: transform .25s; }
   .entity-btn:hover .btn-emoji { transform: scale(1.12); }
 
+  /* tooltip */
   .entity-tooltip {
-    position: absolute;
-    bottom: calc(100% + 6px); left: 50%;
+    position: absolute; bottom: calc(100% + 7px); left: 50%;
     transform: translateX(-50%) translateY(4px);
-    font-size: .82rem; white-space: nowrap;
-    background: rgba(12,12,16,.95);
-    border: 1px solid rgba(245,196,0,.22);
-    border-radius: 9px; padding: .22rem .65rem;
+    font-size: .78rem; white-space: nowrap;
+    background: rgba(10,10,14,.96); border: 1px solid rgba(245,196,0,.22);
+    border-radius: 9px; padding: .2rem .6rem;
     pointer-events: none; opacity: 0;
-    transition: opacity .16s, transform .16s; z-index: 20;
+    transition: opacity .16s, transform .16s; z-index: 30;
   }
   [data-theme="light"] .entity-tooltip { background: rgba(255,255,255,.97); border-color: rgba(180,130,0,.3); color: #222; }
   .entity-wrap:hover .entity-tooltip { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-
-  /* ══════════════ SECTION DIVIDER ══════════════ */
+  /* ══ DIVIDER ══ */
   .sec-div {
     text-align: center; padding: 2.5rem 2rem 1.5rem;
     color: var(--muted); font-size: .78rem; letter-spacing: .15em; text-transform: uppercase;
   }
-  .sec-div::before {
-    content: ''; display: block; width: 40px; height: 1px;
-    background: var(--border); margin: 0 auto 1rem;
-  }
+  .sec-div::before { content: ''; display: block; width: 40px; height: 1px; background: var(--border); margin: 0 auto 1rem; }
 
-
-  /* ══════════════ MEMBERS ══════════════ */
+  /* ══ MEMBERS ══ */
   .members-wrap { padding: 0 2rem 5rem; }
-  .members-list {
-    display: flex; flex-direction: column; gap: .65rem;
-    max-width: 860px; margin: 0 auto;
-  }
+  .members-list { display: flex; flex-direction: column; gap: .65rem; max-width: 860px; margin: 0 auto; }
   .member-card {
-    display: flex; align-items: center; gap: 1rem;
-    padding: .75rem 1.2rem;
+    display: flex; align-items: center; gap: 1rem; padding: .75rem 1.2rem;
     background: var(--surface2); border: 1.5px solid rgba(245,196,0,.28);
-    border-radius: 13px; cursor: default;
-    transition: border-color .2s, box-shadow .2s;
+    border-radius: 13px; cursor: default; transition: border-color .2s, box-shadow .2s;
   }
   .member-card:hover { border-color: rgba(245,196,0,.6); box-shadow: 0 0 16px rgba(245,196,0,.12); }
   .member-avatar {
@@ -316,15 +295,12 @@
   }
   .member-name { font-size: .92rem; font-weight: 700; letter-spacing: .04em; }
 
-
-  /* ══════════════ APP ══════════════ */
+  /* ══ APP ══ */
   .app-bar {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 2rem; height: 58px;
-    background: var(--nav-bg); backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border);
-    position: sticky; top: 0; z-index: 100;
-    transition: background .25s;
+    padding: 0 2rem; height: 58px; background: var(--nav-bg);
+    backdrop-filter: blur(14px); border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 100; transition: background .25s;
   }
   .app-bar .logo { font-size: 1.15rem; font-weight: 900; color: var(--accent); letter-spacing: .06em; text-shadow: 0 0 16px rgba(245,196,0,.4); }
   .app-bar-r { display: flex; align-items: center; gap: .4rem; }
@@ -340,10 +316,8 @@
   .theme-btn.light-btn { background: #eee; }
 
   .tabs-nav {
-    display: flex; background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 0 1.5rem; overflow-x: auto;
-    transition: background .25s;
+    display: flex; background: var(--surface); border-bottom: 1px solid var(--border);
+    padding: 0 1.5rem; overflow-x: auto; transition: background .25s;
   }
   .tabs-nav::-webkit-scrollbar { display: none; }
   .tab-btn {
@@ -364,51 +338,49 @@
     gap: 2.5rem; background: var(--bg); transition: background .25s;
   }
   .tab-content.active { display: flex; }
-
   .tab-label { text-align: center; }
   .tab-label h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: .4rem; }
   .tab-label p  { font-size: .9rem; color: var(--muted); }
-
   .soon-wrap { display: flex; flex-direction: column; align-items: center; gap: 1.2rem; }
   .soon-text  { font-size: 1.1rem; color: var(--muted); letter-spacing: .1em; }
   .soon-emoji { font-size: 5rem; opacity: .28; }
-
   .entities-grid { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
 
-
-  /* ══════════════ MOBILE ══════════════ */
+  /* ══ MOBILE ══ */
   @media (max-width: 900px) {
     .about-inner { flex-direction: column; }
-    .about-pic { width: 100%; max-width: 340px; }
+    .about-pic { width: 100%; max-width: 320px; }
   }
-
   @media (max-width: 768px) {
     .nav { grid-template-columns: auto auto; padding: 0 1.2rem; }
     .nav-links { display: none; }
     .nav-btn-ghost { display: none; }
-
-    .universe-stage { width: 360px; height: 360px; }
-    .orbit-ring { width: 290px; height: 290px; margin: -145px 0 0 -145px; }
-    .orbit-slot { top: -145px; left: -42px; width: 84px; height: 84px; }
-    .entity-btn.orbit-btn { width: 84px; height: 84px; font-size: .7rem; border-radius: 12px; }
-    .entity-btn.orbit-btn .btn-emoji { font-size: 1.5rem; }
-    .entity-btn.big { width: 130px; height: 130px; }
-    .entity-btn.big .btn-emoji { font-size: 2.4rem; }
+    /* scale orbits down */
+    .universe-stage { width: 300px; height: 300px; }
+    .or1 { width: 200px; height: 200px; margin: -100px 0 0 -100px; }
+    .or2 { width: 300px; height: 300px; margin: -150px 0 0 -150px; }
+    .or3 { width: 400px; height: 400px; margin: -200px 0 0 -200px; }
+    .or4 { display: none; }
+    .s1 { top: -100px; left: -28px; width: 56px; height: 56px; }
+    .s2 { top: -150px; left: -30px; width: 60px; height: 60px; }
+    .s3 { top: -200px; left: -30px; width: 60px; height: 60px; }
+    .entity-btn.center { width: 100px; height: 100px; font-size: .8rem; }
+    .entity-btn.center .btn-emoji { font-size: 2.2rem; }
+    .entity-btn.r1btn { width: 56px; height: 56px; font-size: .6rem; gap: .2rem; border-radius: 10px; }
+    .entity-btn.r1btn .btn-emoji { font-size: 1.2rem; }
+    .entity-btn.r2btn, .entity-btn.r3btn { width: 60px; height: 60px; font-size: .62rem; gap: .2rem; border-radius: 10px; }
+    .entity-btn.r2btn .btn-emoji, .entity-btn.r3btn .btn-emoji { font-size: 1.3rem; }
   }
-
   @media (max-width: 480px) {
     .nav { padding: 0 1rem; }
     .nav-logo-sub { display: none; }
     .nav-btn-primary { padding: .4rem .85rem; font-size: .8rem; }
-
     .about { padding: 3rem 1rem 2.5rem; }
     .about-pic { display: none; }
-    .uni-section { padding: 2.5rem 1rem 3rem; }
-
+    .uni-section { padding: 2rem 1rem 4rem; }
     .entities-grid { gap: 1rem; }
     .entity-btn.tab-size { width: 130px; height: 130px; font-size: .88rem; }
     .entity-btn.tab-size .btn-emoji { font-size: 2.4rem; }
-
     .members-wrap { padding: 0 1rem 3rem; }
     .tab-btn { padding: .75rem .9rem; font-size: .8rem; }
   }
@@ -416,10 +388,9 @@
 </head>
 <body>
 
-<!-- ══════════════════════════════ LANDING ══════════════════════════════ -->
+<!-- ════════ LANDING ════════ -->
 <div id="landing">
 
-  <!-- NAV -->
   <header class="nav">
     <div class="nav-logo">
       <div class="nav-logo-icon">Б</div>
@@ -428,13 +399,11 @@
         <div class="nav-logo-sub">Главное меню</div>
       </div>
     </div>
-
     <nav class="nav-links">
       <button class="nav-link" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Описание</button>
       <button class="nav-link" onclick="document.getElementById('universe').scrollIntoView({behavior:'smooth'})">Существа базы</button>
       <button class="nav-link" onclick="document.getElementById('members').scrollIntoView({behavior:'smooth'})">Участники</button>
     </nav>
-
     <div class="nav-actions">
       <div class="nav-theme">
         <button class="nth dark-btn active" onclick="setTheme('dark')">🌙</button>
@@ -445,15 +414,13 @@
     </div>
   </header>
 
-  <!-- DESCRIPTION / ABOUT -->
+  <!-- DESCRIPTION -->
   <section id="about" class="about">
     <div class="about-stars" id="stars"></div>
     <div class="about-inner">
       <div class="about-text">
         <h2 class="about-title">Что такое База?</h2>
-        <p class="about-desc">
-          База — это место где живут самые необычные существа. Здесь вы найдёте корову, пчола, биргамота и шпрота — каждый со своей историей и характером.
-        </p>
+        <p class="about-desc">База — это место где живут самые необычные существа. Здесь вы найдёте корову, пчола, биргамота и шпрота — каждый со своей историей и характером.</p>
         <ul class="about-list">
           <li>изучайте существ базы;</li>
           <li>узнавайте их историю и повадки;</li>
@@ -466,33 +433,47 @@
     </div>
   </section>
 
-  <!-- UNIVERSE / ENTITIES -->
+  <!-- UNIVERSE — 4 concentric orbits -->
   <section id="universe" class="uni-section">
     <h2 class="uni-heading">Существа Базы:</h2>
     <p class="uni-sub">Нажмите на существо, чтобы перейти к нему</p>
 
-    <div class="universe-stage">
+    <div class="universe-stage" id="stage">
 
-      <!-- Center: Биргапчол -->
+      <!-- 4 visual rings -->
+      <div class="orbit-ring or1"></div>
+      <div class="orbit-ring or2"></div>
+      <div class="orbit-ring or3"></div>
+      <div class="orbit-ring or4"></div>
+
+      <!-- CENTER: Биргапчол -->
       <div class="universe-center">
         <div class="entity-wrap">
           <div class="entity-tooltip">Бог базы 👁️</div>
-          <button class="entity-btn big" onclick="enterApp('bog')">
+          <button class="entity-btn center" onclick="enterApp('bog')">
             <span class="btn-label">Биргапчол</span>
             <span class="btn-emoji">👁️</span>
           </button>
         </div>
       </div>
 
-      <!-- Orbit ring -->
-      <div class="orbit-ring"></div>
-
-      <!-- Пчол — 0° -->
-      <div class="orbit-track t1">
-        <div class="orbit-slot">
+      <!-- RING 1 — Биргамот (0°) + Пчол (180°) -->
+      <div class="orbit-track r1a">
+        <div class="orbit-slot s1">
+          <div class="entity-wrap">
+            <div class="entity-tooltip"><span class="fa2">🦛🍵</span><span class="fb2" style="display:none">🍵🦛</span></div>
+            <button class="entity-btn r1btn" onclick="enterApp('silnye')">
+              <span class="btn-label">Биргамот</span>
+              <span class="btn-emoji">🦛</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="orbit-track r1b">
+        <div class="orbit-slot s1">
           <div class="entity-wrap">
             <div class="entity-tooltip">Пчол 🐝</div>
-            <button class="entity-btn orbit-btn" onclick="enterApp('silnye')">
+            <button class="entity-btn r1btn" onclick="enterApp('silnye')">
               <span class="btn-label">Пчол</span>
               <span class="btn-emoji">🐝</span>
             </button>
@@ -500,25 +481,12 @@
         </div>
       </div>
 
-      <!-- Биргамот — 90° -->
-      <div class="orbit-track t2">
-        <div class="orbit-slot">
-          <div class="entity-wrap">
-            <div class="entity-tooltip"><span class="fa2">🦛🍵</span><span class="fb2" style="display:none">🍵🦛</span></div>
-            <button class="entity-btn orbit-btn" onclick="enterApp('silnye')">
-              <span class="btn-label">Биргамот</span>
-              <span class="btn-emoji">🦛</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Корова — 180° -->
-      <div class="orbit-track t3">
-        <div class="orbit-slot">
+      <!-- RING 2 — Корова -->
+      <div class="orbit-track r2a">
+        <div class="orbit-slot s2">
           <div class="entity-wrap">
             <div class="entity-tooltip">Муууу 🐮</div>
-            <button class="entity-btn orbit-btn" onclick="enterApp('silnye')">
+            <button class="entity-btn r2btn" onclick="enterApp('silnye')">
               <span class="btn-label">Корова</span>
               <span class="btn-emoji">🐮</span>
             </button>
@@ -526,18 +494,20 @@
         </div>
       </div>
 
-      <!-- Шпрот — 270° -->
-      <div class="orbit-track t4">
-        <div class="orbit-slot">
+      <!-- RING 3 — Шпрот -->
+      <div class="orbit-track r3a">
+        <div class="orbit-slot s3">
           <div class="entity-wrap">
             <div class="entity-tooltip">🐋🐋🐋</div>
-            <button class="entity-btn orbit-btn" onclick="enterApp('ostalnie')">
+            <button class="entity-btn r3btn" onclick="enterApp('ostalnie')">
               <span class="btn-label">Шпрот</span>
               <span class="btn-emoji">🐋</span>
             </button>
           </div>
         </div>
       </div>
+
+      <!-- RING 4 — empty (just the visual ring) -->
 
     </div>
   </section>
@@ -556,9 +526,8 @@
 </div><!-- /landing -->
 
 
-<!-- ══════════════════════════════ APP ══════════════════════════════ -->
+<!-- ════════ APP ════════ -->
 <div id="app">
-
   <header class="app-bar">
     <div class="logo">База Wiki</div>
     <div class="app-bar-r">
@@ -583,7 +552,7 @@
   <div class="tab-content" id="tab-bog">
     <div class="tab-label"><h2>Бог</h2><p>Высшее существо базы</p></div>
     <div class="entity-wrap">
-      <button class="entity-btn big">
+      <button class="entity-btn tab-size">
         <span class="btn-label">Биргапчол</span>
         <span class="btn-emoji">👁️</span>
       </button>
@@ -617,18 +586,16 @@
       </div>
     </div>
   </div>
-
 </div><!-- /app -->
 
 
 <script>
   /* stars */
   const sc = document.getElementById('stars');
-  for (let i = 0; i < 55; i++) {
-    const s = document.createElement('div');
-    s.className = 'star';
-    const sz = 1 + Math.random() * 2;
-    s.style.cssText = `width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${2+Math.random()*4}s;--dl:-${Math.random()*5}s`;
+  for (let i = 0; i < 50; i++) {
+    const s = document.createElement('div'); s.className = 'star';
+    const z = 1 + Math.random() * 2;
+    s.style.cssText = `width:${z}px;height:${z}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${2+Math.random()*4}s;--dl:-${Math.random()*5}s`;
     sc.appendChild(s);
   }
 
@@ -642,6 +609,7 @@
       const btn = document.querySelector(`[onclick="openTab('${tab}',this)"]`);
       if (btn) btn.classList.add('active');
     }
+    applyEmoji();
   }
 
   function exitApp() {
@@ -665,39 +633,47 @@
     localStorage.setItem('base-theme', t);
   }
 
-  /* биргамот flip — app */
-  document.querySelectorAll('#app .entity-wrap').forEach(wrap => {
-    const a = wrap.querySelector('.fa'), b = wrap.querySelector('.fb');
-    if (!a || !b) return;
-    let iv;
-    wrap.addEventListener('mouseenter', () => { let t=false; iv=setInterval(()=>{t=!t;a.style.display=t?'none':'inline';b.style.display=t?'inline':'none';},650); });
-    wrap.addEventListener('mouseleave', () => { clearInterval(iv); a.style.display='inline'; b.style.display='none'; });
-  });
-
-  /* биргамот flip — orbit */
-  document.querySelectorAll('.orbit-track.t2').forEach(track => {
-    const a = track.querySelector('.fa2'), b = track.querySelector('.fb2');
-    if (!a || !b) return;
-    let iv;
-    track.addEventListener('mouseenter', () => { let t=false; iv=setInterval(()=>{t=!t;a.style.display=t?'none':'inline';b.style.display=t?'inline':'none';},650); });
-    track.addEventListener('mouseleave', () => { clearInterval(iv); a.style.display='inline'; b.style.display='none'; });
-  });
-
-  /* pause ALL orbits on hover of any track */
-  const stage = document.querySelector('.universe-stage');
+  /* pause ALL orbits on hover */
+  const stage = document.getElementById('stage');
   if (stage) {
     stage.querySelectorAll('.orbit-track').forEach(track => {
-      track.addEventListener('mouseenter', () => stage.classList.add('orbit-paused'));
-      track.addEventListener('mouseleave', () => stage.classList.remove('orbit-paused'));
+      track.addEventListener('mouseenter', () => stage.classList.add('paused'));
+      track.addEventListener('mouseleave', () => stage.classList.remove('paused'));
+    });
+  }
+
+  /* биргамот flip */
+  function setupFlip(fa, fb) {
+    if (!fa || !fb) return;
+    let iv;
+    const wrap = fa.closest('.entity-wrap');
+    wrap.addEventListener('mouseenter', () => { let t=false; iv=setInterval(()=>{t=!t;fa.style.display=t?'none':'inline';fb.style.display=t?'inline':'none';},650); });
+    wrap.addEventListener('mouseleave', () => { clearInterval(iv); fa.style.display='inline'; fb.style.display='none'; });
+  }
+  document.querySelectorAll('.fa,.fa2').forEach(fa => {
+    const fb = fa.nextElementSibling;
+    if (fb && (fb.classList.contains('fb') || fb.classList.contains('fb2'))) setupFlip(fa, fb);
+  });
+
+  /* Apple emoji via emoji-datasource-apple CDN */
+  function applyEmoji() {
+    if (typeof twemoji === 'undefined') return;
+    twemoji.parse(document.body, {
+      base: 'https://cdn.jsdelivr.net/npm/emoji-datasource-apple@15.0.1/img/apple/',
+      size: '64',
+      ext: '.png',
+      className: 'emoji'
     });
   }
 
   const saved = localStorage.getItem('base-theme');
   if (saved) setTheme(saved);
 
-  /* apply Twemoji (Twitter/iOS-style emoji) to entire page */
-  if (typeof twemoji !== 'undefined') {
-    twemoji.parse(document.body, { folder: 'svg', ext: '.svg' });
+  /* apply emoji after page load */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyEmoji);
+  } else {
+    applyEmoji();
   }
 </script>
 </body>
