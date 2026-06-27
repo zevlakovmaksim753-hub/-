@@ -3,22 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- === SEO === -->
   <title>Base — Корова, Пчолы и Биргамот</title>
   <meta name="description" content="Base — сайт о корове, пчолах и биргамоте. Всё что нужно знать в одном месте." />
   <meta name="keywords" content="корова, пчолы, биргамот, мёд, молоко, ферма" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://zevlakovmaksim753-hub.github.io/-/" />
-
-  <!-- === Open Graph (для соцсетей и ИИ) === -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Base — Корова, Пчолы и Биргамот" />
   <meta property="og:description" content="Base — сайт о корове, пчолах и биргамоте." />
   <meta property="og:url" content="https://zevlakovmaksim753-hub.github.io/-/" />
   <meta property="og:locale" content="ru_RU" />
-
-  <!-- === Структурированные данные JSON-LD (для Google AI, Bing, ChatGPT) === -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -34,29 +28,21 @@
     ]
   }
   </script>
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* THEMES */
-    [data-theme="dark"] {
-      --bg: #111111;
-      --surface: #1c1c1c;
-      --border: #2a2a2a;
+    :root {
+      --bg: #080808;
+      --surface: #111111;
+      --surface2: #181818;
+      --border: #222;
       --text: #f0f0f0;
-      --muted: #777;
+      --muted: #555;
       --accent: #f5c400;
+      --accent-glow: rgba(245, 196, 0, 0.25);
       --accent-hover: #ffd732;
-      --tab-active-text: #111;
-    }
-    [data-theme="light"] {
-      --bg: #f5f5f5;
-      --surface: #ffffff;
-      --border: #e0e0e0;
-      --text: #111111;
-      --muted: #888;
-      --accent: #f5c400;
-      --accent-hover: #e6b800;
-      --tab-active-text: #111;
+      --radius: 14px;
     }
 
     body {
@@ -64,18 +50,159 @@
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
-      transition: background .25s, color .25s;
+      overflow-x: hidden;
     }
 
-    /* TOP BAR */
+    /* ── BACKGROUND ORBS ── */
+    .bg-orbs {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0;
+      animation: orbFloat 12s ease-in-out infinite;
+    }
+
+    .orb-1 {
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(245,196,0,.35) 0%, transparent 70%);
+      top: -200px; right: -150px;
+      animation-delay: 0s;
+      opacity: .18;
+    }
+    .orb-2 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(255,120,0,.25) 0%, transparent 70%);
+      bottom: -150px; left: -100px;
+      animation-delay: -4s;
+      opacity: .14;
+    }
+    .orb-3 {
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(245,196,0,.2) 0%, transparent 70%);
+      top: 55%; left: 45%;
+      animation-delay: -8s;
+      opacity: .1;
+    }
+
+    @keyframes orbFloat {
+      0%, 100% { transform: translateY(0) scale(1); }
+      33%       { transform: translateY(-40px) scale(1.05); }
+      66%       { transform: translateY(20px) scale(.97); }
+    }
+
+    /* ── SCREENS ── */
+    .screen { position: relative; z-index: 1; }
+    .screen.hidden { display: none; }
+
+    /* ── LANDING ── */
+    #landing {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .landing-inner {
+      text-align: center;
+      padding: 2rem;
+      max-width: 480px;
+    }
+
+    .landing-logo {
+      font-size: clamp(3.5rem, 10vw, 6rem);
+      font-weight: 900;
+      letter-spacing: .06em;
+      color: var(--accent);
+      text-shadow:
+        0 0 40px rgba(245,196,0,.6),
+        0 0 80px rgba(245,196,0,.25);
+      margin-bottom: .5rem;
+      line-height: 1;
+    }
+
+    .landing-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+    }
+
+    .landing-desc {
+      font-size: 1.05rem;
+      color: #aaa;
+      line-height: 1.7;
+      margin-bottom: 3rem;
+    }
+
+    .landing-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    /* ── BUTTONS ── */
+    .btn {
+      padding: .85rem 2.2rem;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: var(--radius);
+      border: 2px solid var(--accent);
+      cursor: pointer;
+      letter-spacing: .04em;
+      transition: all .2s;
+      position: relative;
+      min-width: 220px;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #111;
+      box-shadow: 0 0 24px rgba(245,196,0,.4), 0 4px 20px rgba(0,0,0,.4);
+    }
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      box-shadow: 0 0 40px rgba(245,196,0,.65), 0 4px 24px rgba(0,0,0,.5);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--muted);
+      border-color: #333;
+      cursor: not-allowed;
+    }
+    .btn-ghost .badge {
+      font-size: .7rem;
+      background: #222;
+      color: var(--muted);
+      padding: 2px 7px;
+      border-radius: 99px;
+      margin-left: .5rem;
+      vertical-align: middle;
+      letter-spacing: .05em;
+    }
+
+    /* ── TOP BAR ── */
     .topbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 2rem;
       height: 60px;
-      background: var(--surface);
-      border-bottom: 2px solid var(--accent);
+      background: rgba(17,17,17,.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #1e1e1e;
+      box-shadow: 0 1px 0 rgba(245,196,0,.12);
       position: sticky;
       top: 0;
       z-index: 100;
@@ -83,142 +210,280 @@
 
     .topbar .logo {
       font-size: 1.3rem;
-      font-weight: 800;
+      font-weight: 900;
       color: var(--accent);
-      letter-spacing: .04em;
+      letter-spacing: .06em;
+      text-shadow: 0 0 20px rgba(245,196,0,.5);
     }
 
-    /* THEME SWITCHER */
-    .theme-switcher {
-      display: flex;
-      gap: .5rem;
-      align-items: center;
-    }
-
+    .theme-switcher { display: flex; gap: .5rem; align-items: center; }
     .theme-btn {
-      width: 32px;
-      height: 32px;
+      width: 30px; height: 30px;
       border-radius: 50%;
       border: 2px solid transparent;
       cursor: pointer;
       transition: border-color .2s, transform .15s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: .9rem;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .85rem;
     }
     .theme-btn:hover { transform: scale(1.15); }
     .theme-btn.active { border-color: var(--accent); }
-
-    .theme-btn.dark-btn { background: #111111; }
+    .theme-btn.dark-btn { background: #111; }
     .theme-btn.light-btn { background: #f0f0f0; }
 
-    /* TABS NAV */
+    /* ── TABS NAV ── */
     .tabs-nav {
       display: flex;
       gap: 0;
-      border-bottom: 2px solid var(--border);
-      background: var(--surface);
+      background: rgba(17,17,17,.7);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #1e1e1e;
       padding: 0 2rem;
     }
 
     .tab-btn {
-      padding: 1rem 2rem;
-      font-size: 1rem;
-      font-weight: 600;
+      padding: .9rem 1.8rem;
+      font-size: .95rem;
+      font-weight: 700;
       background: none;
       border: none;
       border-bottom: 3px solid transparent;
-      margin-bottom: -2px;
+      margin-bottom: -1px;
       cursor: pointer;
       color: var(--muted);
-      transition: color .2s, border-color .2s;
-      letter-spacing: .02em;
+      transition: color .2s, border-color .2s, text-shadow .2s;
+      letter-spacing: .03em;
     }
-
     .tab-btn:hover { color: var(--text); }
-
     .tab-btn.active {
-      color: var(--tab-active-text);
-      background: var(--accent);
+      color: var(--accent);
       border-bottom-color: var(--accent);
-      border-radius: 4px 4px 0 0;
+      text-shadow: 0 0 16px rgba(245,196,0,.5);
     }
 
-    /* TAB CONTENT */
+    /* ── TAB CONTENT ── */
     .tab-content {
       display: none;
-      padding: 3rem 2rem;
-      min-height: calc(100vh - 120px);
+      padding: 4rem 2rem;
+      min-height: calc(100vh - 110px);
       align-items: center;
       justify-content: center;
     }
     .tab-content.active { display: flex; }
 
-    .empty-state {
-      text-align: center;
+    /* ── SOON ── */
+    .soon-text {
+      font-size: 1.4rem;
       color: var(--muted);
+      letter-spacing: .1em;
+      font-weight: 300;
     }
 
-    .empty-state .icon {
-      font-size: 4rem;
-      margin-bottom: 1rem;
-      opacity: .5;
+    /* ── ENTITY BUTTONS ── */
+    .entities-grid {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-end;
     }
 
-    .empty-state p {
-      font-size: 1rem;
+    .entity-wrap {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .entity-btn {
+      padding: 1rem 2.2rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      background: var(--surface2);
+      border: 2px solid var(--accent);
+      border-radius: 999px;
+      cursor: pointer;
+      letter-spacing: .05em;
+      transition: all .22s;
+      box-shadow: 0 0 0 rgba(245,196,0,0);
+      position: relative;
+    }
+    .entity-btn:hover {
+      background: rgba(245,196,0,.08);
+      box-shadow: 0 0 22px rgba(245,196,0,.35), 0 4px 18px rgba(0,0,0,.4);
+      transform: translateY(-3px);
+      color: var(--accent);
+    }
+
+    /* tooltip above button */
+    .entity-tooltip {
+      position: absolute;
+      top: -2.8rem;
+      right: -0.8rem;
+      font-size: 1.1rem;
+      white-space: nowrap;
+      background: rgba(20,20,20,.9);
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: .3rem .7rem;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity .18s, transform .18s;
+      backdrop-filter: blur(8px);
+    }
+
+    .entity-wrap:hover .entity-tooltip {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* биргамот tooltip animation */
+    .tooltip-birgamot .frame-a,
+    .tooltip-birgamot .frame-b {
+      display: inline-block;
+    }
+    .tooltip-birgamot .frame-b {
+      display: none;
+    }
+    .entity-wrap:hover .tooltip-birgamot .frame-a {
+      animation: flipEmoji 1.6s steps(1) infinite;
+    }
+    .entity-wrap:hover .tooltip-birgamot .frame-b {
+      display: none;
+      animation: flipEmoji2 1.6s steps(1) infinite;
+    }
+
+    @keyframes flipEmoji {
+      0%, 49%  { display: inline-block; }
+      50%, 100% { display: none; }
+    }
+    @keyframes flipEmoji2 {
+      0%, 49%  { display: none; }
+      50%, 100% { display: inline-block; }
+    }
+
+    /* center single button */
+    .center-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    /* ── DIVIDER LINE ── */
+    .landing-line {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      margin: 0 auto 2rem;
     }
   </style>
 </head>
 <body>
 
-  <!-- TOP BAR -->
-  <header class="topbar">
-    <div class="logo">Base</div>
-    <div class="theme-switcher">
-      <button class="theme-btn dark-btn active" title="Тёмная тема" onclick="setTheme('dark')">🌙</button>
-      <button class="theme-btn light-btn" title="Светлая тема" onclick="setTheme('light')">☀️</button>
-    </div>
-  </header>
+  <!-- BACKGROUND ORBS -->
+  <div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
 
-  <!-- TABS NAV -->
-  <nav class="tabs-nav">
-    <button class="tab-btn active" onclick="openTab('korova')">Корова</button>
-    <button class="tab-btn" onclick="openTab('pchol')">Пчол</button>
-    <button class="tab-btn" onclick="openTab('birgamot')">Биргамот</button>
-  </nav>
-
-  <!-- TAB: КОРОВА -->
-  <div class="tab-content active" id="tab-korova">
-    <div class="empty-state">
-      <div class="icon">🐮</div>
-      <p>Тут пока ничего нет</p>
+  <!-- ══ LANDING ══ -->
+  <div class="screen" id="landing">
+    <div class="landing-inner">
+      <div class="landing-logo">Base</div>
+      <div class="landing-sub">Корова · Пчол · Биргамот</div>
+      <div class="landing-line"></div>
+      <p class="landing-desc">Место где живут корова, пчол и биргамот. Войди или просто начни — они ждут.</p>
+      <div class="landing-btns">
+        <button class="btn btn-ghost" disabled>
+          Войти <span class="badge">скоро</span>
+        </button>
+        <button class="btn btn-primary" onclick="enterApp()">
+          Начать без авторизации
+        </button>
+      </div>
     </div>
   </div>
 
-  <!-- TAB: ПЧОЛ -->
-  <div class="tab-content" id="tab-pchol">
-    <div class="empty-state">
-      <div class="icon">🐝</div>
-      <p>Тут пока ничего нет</p>
-    </div>
-  </div>
+  <!-- ══ APP ══ -->
+  <div class="screen hidden" id="app">
 
-  <!-- TAB: БИРГАМОТ -->
-  <div class="tab-content" id="tab-birgamot">
-    <div class="empty-state">
-      <div class="icon">🦛🍵</div>
-      <p>Тут пока ничего нет</p>
+    <!-- TOP BAR -->
+    <header class="topbar">
+      <div class="logo">Base</div>
+      <div class="theme-switcher">
+        <button class="theme-btn dark-btn active" title="Тёмная тема" onclick="setTheme('dark')">🌙</button>
+        <button class="theme-btn light-btn" title="Светлая тема" onclick="setTheme('light')">☀️</button>
+      </div>
+    </header>
+
+    <!-- TABS NAV -->
+    <nav class="tabs-nav">
+      <button class="tab-btn active" onclick="openTab('baza', this)">База</button>
+      <button class="tab-btn" onclick="openTab('bog', this)">Бог</button>
+      <button class="tab-btn" onclick="openTab('silnye', this)">Сильные</button>
+      <button class="tab-btn" onclick="openTab('ostalnie', this)">Остальные</button>
+    </nav>
+
+    <!-- TAB: БАЗА -->
+    <div class="tab-content active" id="tab-baza">
+      <p class="soon-text">скоро...</p>
     </div>
+
+    <!-- TAB: БОГ -->
+    <div class="tab-content" id="tab-bog">
+      <div class="center-content">
+        <div class="entity-wrap">
+          <button class="entity-btn">Биргапчол</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: СИЛЬНЫЕ -->
+    <div class="tab-content" id="tab-silnye">
+      <div class="entities-grid">
+
+        <div class="entity-wrap">
+          <div class="entity-tooltip">Муууу 🐮</div>
+          <button class="entity-btn">Корова</button>
+        </div>
+
+        <div class="entity-wrap">
+          <div class="entity-tooltip tooltip-birgamot">
+            <span class="frame-a">🦛🍵</span><span class="frame-b">🍵🦛</span>
+          </div>
+          <button class="entity-btn">Биргамот</button>
+        </div>
+
+        <div class="entity-wrap">
+          <div class="entity-tooltip">Пчол 🐝</div>
+          <button class="entity-btn">Пчол</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TAB: ОСТАЛЬНЫЕ -->
+    <div class="tab-content" id="tab-ostalnie">
+      <p class="soon-text">скоро...</p>
+    </div>
+
   </div>
 
   <script>
-    function openTab(name) {
+    function enterApp() {
+      document.getElementById('landing').classList.add('hidden');
+      document.getElementById('app').classList.remove('hidden');
+    }
+
+    function openTab(name, btn) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
       document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
       document.getElementById('tab-' + name).classList.add('active');
-      event.currentTarget.classList.add('active');
+      btn.classList.add('active');
     }
 
     function setTheme(theme) {
@@ -228,7 +493,26 @@
       localStorage.setItem('base-theme', theme);
     }
 
-    // Restore theme
+    // анимация биргамота — переключение эмодзи
+    document.querySelectorAll('.tooltip-birgamot').forEach(el => {
+      const a = el.querySelector('.frame-a');
+      const b = el.querySelector('.frame-b');
+      let iv;
+      el.closest('.entity-wrap').addEventListener('mouseenter', () => {
+        let toggle = false;
+        iv = setInterval(() => {
+          toggle = !toggle;
+          a.style.display = toggle ? 'none' : 'inline';
+          b.style.display = toggle ? 'inline' : 'none';
+        }, 700);
+      });
+      el.closest('.entity-wrap').addEventListener('mouseleave', () => {
+        clearInterval(iv);
+        a.style.display = 'inline';
+        b.style.display = 'none';
+      });
+    });
+
     const saved = localStorage.getItem('base-theme');
     if (saved) setTheme(saved);
   </script>
