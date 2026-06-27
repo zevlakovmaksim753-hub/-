@@ -14,18 +14,17 @@
   <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  /* ── THEMES ── */
   [data-theme="dark"] {
     --bg: #0e0e10; --surface: #17171a; --surface2: #1f1f24;
     --border: #28282f; --text: #f0f0f0; --text2: #aaa; --muted: #555;
     --accent: #f5c400; --accent-h: #ffd732;
-    --card: rgba(255,255,255,.04); --nav-bg: rgba(14,14,16,.88);
+    --nav-bg: rgba(14,14,16,.9);
   }
   [data-theme="light"] {
     --bg: #f2f2f5; --surface: #fff; --surface2: #eaeaee;
     --border: #dddde3; --text: #111; --text2: #555; --muted: #999;
     --accent: #c49a00; --accent-h: #f5c400;
-    --card: rgba(0,0,0,.03); --nav-bg: rgba(255,255,255,.9);
+    --nav-bg: rgba(255,255,255,.92);
   }
 
   body {
@@ -38,9 +37,7 @@
   #landing { display: block; }
   #app     { display: none; }
 
-  /* ══════════════════════════════
-     NAV  (POLITMINE-style 3-col)
-  ══════════════════════════════ */
+  /* ══════════════ NAV ══════════════ */
   .nav {
     position: sticky; top: 0; z-index: 300;
     height: 62px;
@@ -55,32 +52,32 @@
     transition: background .25s;
   }
 
-  .nav-logo { display: flex; align-items: center; gap: .7rem; text-decoration: none; }
+  .nav-logo { display: flex; align-items: center; gap: .7rem; }
   .nav-logo-icon {
     width: 38px; height: 38px;
-    background: var(--accent);
-    border-radius: 10px;
+    background: var(--accent); border-radius: 10px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 1.15rem; flex-shrink: 0;
-    box-shadow: 0 0 16px rgba(245,196,0,.4);
+    font-size: 1.1rem; font-weight: 900; color: #111;
+    flex-shrink: 0; box-shadow: 0 0 16px rgba(245,196,0,.4);
+    letter-spacing: 0;
   }
   .nav-logo-name { font-size: 1.05rem; font-weight: 900; letter-spacing: .06em; line-height: 1.1; }
   .nav-logo-sub  { font-size: .6rem; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; }
 
   .nav-links { display: flex; justify-content: center; gap: .1rem; }
   .nav-link {
-    padding: .45rem 1rem; font-size: .88rem; font-weight: 500;
+    padding: .45rem .95rem; font-size: .87rem; font-weight: 500;
     color: var(--text2); border-radius: 8px; cursor: pointer;
     background: none; border: none;
-    transition: color .15s, background .15s;
+    transition: color .15s, background .15s; white-space: nowrap;
   }
   .nav-link:hover { color: var(--text); background: rgba(255,255,255,.06); }
   [data-theme="light"] .nav-link:hover { background: rgba(0,0,0,.05); }
 
-  .nav-actions { display: flex; align-items: center; gap: .6rem; }
+  .nav-actions { display: flex; align-items: center; gap: .55rem; }
 
   .nav-btn {
-    padding: .48rem 1.1rem; font-size: .85rem; font-weight: 700;
+    padding: .48rem 1.1rem; font-size: .84rem; font-weight: 700;
     border-radius: 10px; cursor: pointer; letter-spacing: .02em;
     transition: all .2s; white-space: nowrap;
   }
@@ -88,15 +85,11 @@
     background: transparent; color: var(--muted);
     border: 1px solid var(--border); cursor: not-allowed;
   }
-  .nav-btn-ghost .s { font-size: .65rem; background: var(--surface2); color: var(--muted); padding: 1px 6px; border-radius: 99px; margin-left: .3rem; }
-  .nav-btn-primary {
-    background: var(--accent); color: #111; border: none;
-    box-shadow: 0 0 16px rgba(245,196,0,.3);
-  }
-  .nav-btn-primary:hover { background: var(--accent-h); box-shadow: 0 0 28px rgba(245,196,0,.5); transform: translateY(-1px); }
+  .nav-btn-ghost .s { font-size: .64rem; background: var(--surface2); color: var(--muted); padding: 1px 6px; border-radius: 99px; margin-left: .3rem; }
+  .nav-btn-primary { background: var(--accent); color: #111; border: none; box-shadow: 0 0 14px rgba(245,196,0,.3); }
+  .nav-btn-primary:hover { background: var(--accent-h); box-shadow: 0 0 26px rgba(245,196,0,.5); transform: translateY(-1px); }
 
-  /* theme toggle in nav */
-  .nav-theme { display: flex; gap: .25rem; margin-right: .2rem; }
+  .nav-theme { display: flex; gap: .25rem; margin-right: .1rem; }
   .nth {
     width: 28px; height: 28px; border-radius: 50%;
     border: 2px solid transparent; cursor: pointer;
@@ -109,24 +102,15 @@
   .nth.light-btn { background: #eee; }
 
 
-  /* ══════════════════════════════
-     HERO / UNIVERSE
-  ══════════════════════════════ */
-  .hero {
-    position: relative;
-    padding: 4rem 2rem 3rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-    overflow: hidden;
+  /* ══════════════ ABOUT / DESCRIPTION ══════════════ */
+  .about {
+    padding: 5rem 2rem 4rem;
     background: linear-gradient(180deg, #0a0a0d 0%, var(--bg) 100%);
     border-bottom: 1px solid var(--border);
+    position: relative; overflow: hidden;
   }
-
-  .hero-stars {
-    position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 0;
-  }
+  /* subtle stars behind description */
+  .about-stars { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
   .star {
     position: absolute; border-radius: 50%;
     background: rgba(245,196,0,.7);
@@ -134,163 +118,8 @@
   }
   @keyframes twinkle { 0%,100%{opacity:.1;transform:scale(1)} 50%{opacity:.8;transform:scale(1.5)} }
 
-  .hero-glow {
-    position: absolute; width: 700px; height: 500px;
-    top: -250px; right: -100px;
-    background: radial-gradient(circle, rgba(245,196,0,.1) 0%, transparent 65%);
-    pointer-events: none;
-  }
-
-  .hero-heading {
-    position: relative; z-index: 1;
-    font-size: clamp(1.4rem, 3vw, 2rem);
-    font-weight: 800; color: #fff; margin-bottom: .4rem;
-    text-align: center;
-  }
-  .hero-sub {
-    position: relative; z-index: 1;
-    font-size: .88rem; color: var(--muted); margin-bottom: 2.5rem;
-    text-align: center;
-  }
-
-  /* ── ORBIT STAGE ── */
-  .universe-stage {
-    position: relative; z-index: 1;
-    width: 540px; height: 540px;
-    flex-shrink: 0;
-  }
-
-  /* center item */
-  .universe-center {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 5;
-  }
-
-  /* ring visual */
-  .orbit-ring {
-    position: absolute;
-    top: 50%; left: 50%;
-    width: 420px; height: 420px;
-    margin: -210px 0 0 -210px;
-    border: 2px dashed rgba(245,196,0,.2);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 1;
-    box-shadow: 0 0 40px rgba(245,196,0,.04) inset;
-  }
-
-  /* rotating track */
-  .orbit-track {
-    position: absolute;
-    top: 50%; left: 50%;
-    width: 0; height: 0;
-    animation: orbitSpin 20s linear infinite;
-    transform-origin: 0 0;
-    z-index: 3;
-  }
-  .orbit-track.t2 { animation-delay: calc(-20s / 4); }
-  .orbit-track.t3 { animation-delay: calc(-20s * 2 / 4); }
-  .orbit-track.t4 { animation-delay: calc(-20s * 3 / 4); }
-
-  @keyframes orbitSpin { to { transform: rotate(360deg); } }
-
-  /* slot: positioned at orbit radius, counter-rotates */
-  .orbit-slot {
-    position: absolute;
-    top: -210px;        /* orbit radius */
-    left: -55px;        /* half of 110px item */
-    width: 110px;
-    height: 110px;
-    animation: orbitUnspin 20s linear infinite;
-  }
-  .orbit-track.t2 .orbit-slot { animation-delay: calc(-20s / 4); }
-  .orbit-track.t3 .orbit-slot { animation-delay: calc(-20s * 2 / 4); }
-  .orbit-track.t4 .orbit-slot { animation-delay: calc(-20s * 3 / 4); }
-
-  @keyframes orbitUnspin { to { transform: rotate(-360deg); } }
-
-  /* pause + tooltip on hover */
-  .orbit-track:hover,
-  .orbit-track:hover .orbit-slot {
-    animation-play-state: paused;
-  }
-  .orbit-track:hover .orbit-slot .entity-tooltip {
-    opacity: 1; transform: translateY(0);
-  }
-
-
-  /* ══════════════════════════════
-     ENTITY BUTTONS
-  ══════════════════════════════ */
-  .entity-wrap { position: relative; }
-
-  .entity-btn {
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    gap: .6rem; font-weight: 800; letter-spacing: .05em;
-    color: var(--text); background: var(--surface2);
-    border: 2px solid rgba(245,196,0,.38);
-    border-radius: 18px; cursor: pointer;
-    transition: all .25s; position: relative; overflow: hidden;
-    box-shadow: 0 0 10px rgba(245,196,0,.07), 0 2px 14px rgba(0,0,0,.3);
-  }
-  .entity-btn::before {
-    content: ''; position: absolute; inset: 0;
-    background: radial-gradient(circle at 50% 110%, rgba(245,196,0,.1), transparent 65%);
-    opacity: 0; transition: opacity .25s;
-  }
-  .entity-btn:hover::before { opacity: 1; }
-  .entity-btn:hover {
-    border-color: var(--accent);
-    box-shadow: 0 0 24px rgba(245,196,0,.45), 0 0 60px rgba(245,196,0,.14), 0 8px 30px rgba(0,0,0,.4);
-    transform: translateY(-3px) scale(1.04);
-    color: var(--accent);
-  }
-  .entity-btn.big {
-    width: 210px; height: 210px; font-size: 1rem;
-    border-color: rgba(245,196,0,.55);
-    box-shadow: 0 0 24px rgba(245,196,0,.2), 0 4px 20px rgba(0,0,0,.4);
-  }
-  .entity-btn.big .btn-emoji { font-size: 3.8rem; }
-
-  .entity-btn.orbit-btn {
-    width: 110px; height: 110px; font-size: .82rem; border-radius: 16px;
-  }
-  .entity-btn.orbit-btn .btn-emoji { font-size: 2rem; }
-
-  .entity-btn.tab-size { width: 170px; height: 170px; font-size: 1rem; border-radius: 20px; }
-  .entity-btn.tab-size .btn-emoji { font-size: 3rem; }
-
-  .btn-label { line-height: 1; }
-  .btn-emoji  { line-height: 1; transition: transform .25s; }
-  .entity-btn:hover .btn-emoji { transform: scale(1.12); }
-
-  .entity-tooltip {
-    position: absolute; bottom: calc(100% + 6px); left: 50%;
-    transform: translateX(-50%) translateY(4px);
-    font-size: .82rem; white-space: nowrap;
-    background: rgba(12,12,16,.95);
-    border: 1px solid rgba(245,196,0,.22);
-    border-radius: 9px; padding: .22rem .65rem;
-    pointer-events: none; opacity: 0;
-    transition: opacity .16s, transform .16s; z-index: 20;
-  }
-  [data-theme="light"] .entity-tooltip { background: rgba(255,255,255,.97); border-color: rgba(180,130,0,.3); color: #222; }
-  .entity-wrap:hover .entity-tooltip { opacity: 1; transform: translateX(-50%) translateY(0); }
-
-
-  /* ══════════════════════════════
-     ABOUT
-  ══════════════════════════════ */
-  .about {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 4rem 2rem;
-    transition: background .25s;
-  }
   .about-inner {
+    position: relative; z-index: 1;
     max-width: 900px; margin: 0 auto;
     display: flex; gap: 3rem; align-items: center;
   }
@@ -319,10 +148,130 @@
     background: radial-gradient(circle at 50% 100%, rgba(245,196,0,.1), transparent 70%);
   }
 
+  /* ══════════════ UNIVERSE SECTION ══════════════ */
+  .uni-section {
+    padding: 3.5rem 2rem 4rem;
+    display: flex; flex-direction: column; align-items: center;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .uni-heading { font-size: clamp(1.3rem,2.5vw,1.8rem); font-weight: 800; margin-bottom: .4rem; text-align: center; }
+  .uni-sub { font-size: .87rem; color: var(--muted); margin-bottom: 2.5rem; text-align: center; }
 
-  /* ══════════════════════════════
-     SECTION DIVIDER
-  ══════════════════════════════ */
+  /* STAGE */
+  .universe-stage {
+    position: relative;
+    width: 600px; height: 600px;
+    flex-shrink: 0;
+  }
+
+  .universe-center {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+  }
+
+  .orbit-ring {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 480px; height: 480px;
+    margin: -240px 0 0 -240px;
+    border: 2px dashed rgba(245,196,0,.22);
+    border-radius: 50%;
+    pointer-events: none; z-index: 1;
+    box-shadow: 0 0 50px rgba(245,196,0,.05) inset;
+  }
+
+  /* orbit tracks — radius 240px */
+  .orbit-track {
+    position: absolute; top: 50%; left: 50%;
+    width: 0; height: 0;
+    animation: orbitSpin 24s linear infinite;
+    transform-origin: 0 0; z-index: 3;
+  }
+  /* 4 items at 0°, 90°, 180°, 270° */
+  .orbit-track.t2 { animation-delay: calc(-24s / 4); }
+  .orbit-track.t3 { animation-delay: calc(-24s * 2 / 4); }
+  .orbit-track.t4 { animation-delay: calc(-24s * 3 / 4); }
+
+  @keyframes orbitSpin { to { transform: rotate(360deg); } }
+
+  .orbit-slot {
+    position: absolute;
+    top: -240px;    /* orbit radius */
+    left: -55px;    /* half of 110px */
+    width: 110px; height: 110px;
+    animation: orbitUnspin 24s linear infinite;
+  }
+  .orbit-track.t2 .orbit-slot { animation-delay: calc(-24s / 4); }
+  .orbit-track.t3 .orbit-slot { animation-delay: calc(-24s * 2 / 4); }
+  .orbit-track.t4 .orbit-slot { animation-delay: calc(-24s * 3 / 4); }
+
+  @keyframes orbitUnspin { to { transform: rotate(-360deg); } }
+
+  .orbit-track:hover,
+  .orbit-track:hover .orbit-slot { animation-play-state: paused; }
+  .orbit-track:hover .entity-tooltip { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+
+  /* ══════════════ ENTITY BUTTONS ══════════════ */
+  .entity-wrap { position: relative; }
+
+  .entity-btn {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: .6rem; font-weight: 800; letter-spacing: .05em;
+    color: var(--text); background: var(--surface2);
+    border: 2px solid rgba(245,196,0,.38);
+    border-radius: 18px; cursor: pointer;
+    transition: all .25s; position: relative; overflow: hidden;
+    box-shadow: 0 0 10px rgba(245,196,0,.07), 0 2px 14px rgba(0,0,0,.3);
+  }
+  .entity-btn::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 110%, rgba(245,196,0,.1), transparent 65%);
+    opacity: 0; transition: opacity .25s;
+  }
+  .entity-btn:hover::before { opacity: 1; }
+  .entity-btn:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 24px rgba(245,196,0,.45), 0 0 60px rgba(245,196,0,.14), 0 8px 30px rgba(0,0,0,.4);
+    transform: translateY(-3px) scale(1.04);
+    color: var(--accent);
+  }
+
+  .entity-btn.big {
+    width: 200px; height: 200px; font-size: 1rem;
+    border-color: rgba(245,196,0,.6);
+    box-shadow: 0 0 28px rgba(245,196,0,.22), 0 4px 20px rgba(0,0,0,.4);
+  }
+  .entity-btn.big .btn-emoji { font-size: 3.6rem; }
+  .entity-btn.orbit-btn { width: 110px; height: 110px; font-size: .8rem; border-radius: 16px; }
+  .entity-btn.orbit-btn .btn-emoji { font-size: 2rem; }
+  .entity-btn.tab-size { width: 170px; height: 170px; font-size: 1rem; border-radius: 20px; }
+  .entity-btn.tab-size .btn-emoji { font-size: 3rem; }
+
+  .btn-label { line-height: 1; }
+  .btn-emoji  { line-height: 1; transition: transform .25s; }
+  .entity-btn:hover .btn-emoji { transform: scale(1.12); }
+
+  .entity-tooltip {
+    position: absolute;
+    bottom: calc(100% + 6px); left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    font-size: .82rem; white-space: nowrap;
+    background: rgba(12,12,16,.95);
+    border: 1px solid rgba(245,196,0,.22);
+    border-radius: 9px; padding: .22rem .65rem;
+    pointer-events: none; opacity: 0;
+    transition: opacity .16s, transform .16s; z-index: 20;
+  }
+  [data-theme="light"] .entity-tooltip { background: rgba(255,255,255,.97); border-color: rgba(180,130,0,.3); color: #222; }
+  .entity-wrap:hover .entity-tooltip { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+
+  /* ══════════════ SECTION DIVIDER ══════════════ */
   .sec-div {
     text-align: center; padding: 2.5rem 2rem 1.5rem;
     color: var(--muted); font-size: .78rem; letter-spacing: .15em; text-transform: uppercase;
@@ -333,9 +282,7 @@
   }
 
 
-  /* ══════════════════════════════
-     MEMBERS
-  ══════════════════════════════ */
+  /* ══════════════ MEMBERS ══════════════ */
   .members-wrap { padding: 0 2rem 5rem; }
   .members-list {
     display: flex; flex-direction: column; gap: .65rem;
@@ -358,9 +305,7 @@
   .member-name { font-size: .92rem; font-weight: 700; letter-spacing: .04em; }
 
 
-  /* ══════════════════════════════
-     APP
-  ══════════════════════════════ */
+  /* ══════════════ APP ══════════════ */
   .app-bar {
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 2rem; height: 58px;
@@ -370,7 +315,7 @@
     transition: background .25s;
   }
   .app-bar .logo { font-size: 1.15rem; font-weight: 900; color: var(--accent); letter-spacing: .06em; text-shadow: 0 0 16px rgba(245,196,0,.4); }
-  .app-bar-right { display: flex; align-items: center; gap: .4rem; }
+  .app-bar-r { display: flex; align-items: center; gap: .4rem; }
   .theme-btn {
     width: 30px; height: 30px; border-radius: 50%;
     border: 2px solid transparent; cursor: pointer;
@@ -419,12 +364,10 @@
   .entities-grid { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
 
 
-  /* ══════════════════════════════
-     MOBILE
-  ══════════════════════════════ */
+  /* ══════════════ MOBILE ══════════════ */
   @media (max-width: 900px) {
     .about-inner { flex-direction: column; }
-    .about-pic { width: 100%; max-width: 320px; }
+    .about-pic { width: 100%; max-width: 340px; }
   }
 
   @media (max-width: 768px) {
@@ -432,22 +375,13 @@
     .nav-links { display: none; }
     .nav-btn-ghost { display: none; }
 
-    .universe-stage {
-      width: 320px; height: 320px;
-    }
-    .orbit-ring {
-      width: 250px; height: 250px;
-      margin: -125px 0 0 -125px;
-    }
-    .orbit-slot {
-      top: -125px; /* smaller radius */
-      left: -42px;
-      width: 84px; height: 84px;
-    }
-    .entity-btn.orbit-btn { width: 84px; height: 84px; font-size: .72rem; border-radius: 12px; }
+    .universe-stage { width: 360px; height: 360px; }
+    .orbit-ring { width: 290px; height: 290px; margin: -145px 0 0 -145px; }
+    .orbit-slot { top: -145px; left: -42px; width: 84px; height: 84px; }
+    .entity-btn.orbit-btn { width: 84px; height: 84px; font-size: .7rem; border-radius: 12px; }
     .entity-btn.orbit-btn .btn-emoji { font-size: 1.5rem; }
-    .entity-btn.big { width: 140px; height: 140px; }
-    .entity-btn.big .btn-emoji { font-size: 2.6rem; }
+    .entity-btn.big { width: 130px; height: 130px; }
+    .entity-btn.big .btn-emoji { font-size: 2.4rem; }
   }
 
   @media (max-width: 480px) {
@@ -455,9 +389,9 @@
     .nav-logo-sub { display: none; }
     .nav-btn-primary { padding: .4rem .85rem; font-size: .8rem; }
 
-    .hero { padding: 2.5rem 1rem 2rem; }
-    .about { padding: 2.5rem 1rem; }
+    .about { padding: 3rem 1rem 2.5rem; }
     .about-pic { display: none; }
+    .uni-section { padding: 2.5rem 1rem 3rem; }
 
     .entities-grid { gap: 1rem; }
     .entity-btn.tab-size { width: 130px; height: 130px; font-size: .88rem; }
@@ -470,13 +404,13 @@
 </head>
 <body>
 
-<!-- ════════════════════════ LANDING ════════════════════════ -->
+<!-- ══════════════════════════════ LANDING ══════════════════════════════ -->
 <div id="landing">
 
   <!-- NAV -->
   <header class="nav">
     <div class="nav-logo">
-      <div class="nav-logo-icon">🐄</div>
+      <div class="nav-logo-icon">Б</div>
       <div>
         <div class="nav-logo-name">БАЗА</div>
         <div class="nav-logo-sub">Главное меню</div>
@@ -485,29 +419,48 @@
 
     <nav class="nav-links">
       <button class="nav-link" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Описание</button>
-      <button class="nav-link" onclick="document.getElementById('universe').scrollIntoView({behavior:'smooth'})">Существа</button>
+      <button class="nav-link" onclick="document.getElementById('universe').scrollIntoView({behavior:'smooth'})">Существа базы</button>
       <button class="nav-link" onclick="document.getElementById('members').scrollIntoView({behavior:'smooth'})">Участники</button>
     </nav>
 
     <div class="nav-actions">
       <div class="nav-theme">
-        <button class="nth dark-btn  active" onclick="setTheme('dark')">🌙</button>
-        <button class="nth light-btn"        onclick="setTheme('light')">☀️</button>
+        <button class="nth dark-btn active" onclick="setTheme('dark')">🌙</button>
+        <button class="nth light-btn"       onclick="setTheme('light')">☀️</button>
       </div>
       <button class="nav-btn nav-btn-ghost" disabled>Авторизоваться<span class="s">скоро</span></button>
       <button class="nav-btn nav-btn-primary" onclick="enterApp()">Начать</button>
     </div>
   </header>
 
-  <!-- HERO / UNIVERSE -->
-  <section id="universe" class="hero">
-    <div class="hero-stars" id="stars"></div>
-    <div class="hero-glow"></div>
+  <!-- DESCRIPTION / ABOUT -->
+  <section id="about" class="about">
+    <div class="about-stars" id="stars"></div>
+    <div class="about-inner">
+      <div class="about-text">
+        <h2 class="about-title">Что такое База?</h2>
+        <p class="about-desc">
+          База — это место где живут самые необычные существа. Здесь вы найдёте корову, пчола, биргамота и шпрота — каждый со своей историей и характером.
+        </p>
+        <ul class="about-list">
+          <li>изучайте существ базы;</li>
+          <li>узнавайте их историю и повадки;</li>
+          <li>следите за Богом — Биргапчолом;</li>
+          <li>пополняйте базу знаний.</li>
+        </ul>
+        <button class="about-btn" onclick="enterApp()">Начать без авторизации</button>
+      </div>
+      <div class="about-pic">🐮</div>
+    </div>
+  </section>
 
-    <h1 class="hero-heading">Существа Базы:</h1>
-    <p class="hero-sub">Нажмите на существо, чтобы перейти к нему</p>
+  <!-- UNIVERSE / ENTITIES -->
+  <section id="universe" class="uni-section">
+    <h2 class="uni-heading">Существа Базы:</h2>
+    <p class="uni-sub">Нажмите на существо, чтобы перейти к нему</p>
 
     <div class="universe-stage">
+
       <!-- Center: Биргапчол -->
       <div class="universe-center">
         <div class="entity-wrap">
@@ -522,7 +475,7 @@
       <!-- Orbit ring -->
       <div class="orbit-ring"></div>
 
-      <!-- Пчол — track 1 -->
+      <!-- Пчол — 0° -->
       <div class="orbit-track t1">
         <div class="orbit-slot">
           <div class="entity-wrap">
@@ -535,7 +488,7 @@
         </div>
       </div>
 
-      <!-- Биргамот — track 2 (120°) -->
+      <!-- Биргамот — 90° -->
       <div class="orbit-track t2">
         <div class="orbit-slot">
           <div class="entity-wrap">
@@ -548,7 +501,7 @@
         </div>
       </div>
 
-      <!-- Корова — track 3 (180°) -->
+      <!-- Корова — 180° -->
       <div class="orbit-track t3">
         <div class="orbit-slot">
           <div class="entity-wrap">
@@ -561,7 +514,7 @@
         </div>
       </div>
 
-      <!-- Шпрот — track 4 (270°) -->
+      <!-- Шпрот — 270° -->
       <div class="orbit-track t4">
         <div class="orbit-slot">
           <div class="entity-wrap">
@@ -573,26 +526,7 @@
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ABOUT -->
-  <section id="about" class="about">
-    <div class="about-inner">
-      <div class="about-text">
-        <h2 class="about-title">Что такое База?</h2>
-        <p class="about-desc">
-          База — это место где живут самые необычные существа. Здесь вы найдёте корову, пчола и биргамота — каждый со своей историей и характером.
-        </p>
-        <ul class="about-list">
-          <li>изучайте существ базы;</li>
-          <li>узнавайте их историю и повадки;</li>
-          <li>следите за Богом — Биргапчолом;</li>
-          <li>пополняйте базу знаний.</li>
-        </ul>
-        <button class="about-btn" onclick="enterApp()">Начать без авторизации</button>
-      </div>
-      <div class="about-pic">🐮</div>
     </div>
   </section>
 
@@ -600,36 +534,24 @@
   <div class="sec-div" id="members">Участники Базы</div>
   <div class="members-wrap">
     <div class="members-list">
-      <div class="member-card">
-        <div class="member-avatar">👤</div>
-        <div class="member-name">MAKSLIMUS</div>
-      </div>
-      <div class="member-card">
-        <div class="member-avatar">👤</div>
-        <div class="member-name">Ket</div>
-      </div>
-      <div class="member-card">
-        <div class="member-avatar">👤</div>
-        <div class="member-name">AIR</div>
-      </div>
-      <div class="member-card">
-        <div class="member-avatar">👤</div>
-        <div class="member-name">Kto-to</div>
-      </div>
+      <div class="member-card"><div class="member-avatar">👤</div><div class="member-name">MAKSLIMUS</div></div>
+      <div class="member-card"><div class="member-avatar">👤</div><div class="member-name">Ket</div></div>
+      <div class="member-card"><div class="member-avatar">👤</div><div class="member-name">AIR</div></div>
+      <div class="member-card"><div class="member-avatar">👤</div><div class="member-name">Kto-to</div></div>
     </div>
   </div>
 
 </div><!-- /landing -->
 
 
-<!-- ════════════════════════ APP ════════════════════════ -->
+<!-- ══════════════════════════════ APP ══════════════════════════════ -->
 <div id="app">
 
   <header class="app-bar">
     <div class="logo">База Wiki</div>
-    <div class="app-bar-right">
-      <button class="theme-btn dark-btn  active" onclick="setTheme('dark')">🌙</button>
-      <button class="theme-btn light-btn"         onclick="setTheme('light')">☀️</button>
+    <div class="app-bar-r">
+      <button class="theme-btn dark-btn active" onclick="setTheme('dark')">🌙</button>
+      <button class="theme-btn light-btn"        onclick="setTheme('light')">☀️</button>
     </div>
   </header>
 
@@ -659,31 +581,18 @@
   <div class="tab-content" id="tab-silnye">
     <div class="tab-label"><h2>Сильные</h2><p>Самые мощные существа</p></div>
     <div class="entities-grid">
-
       <div class="entity-wrap">
         <div class="entity-tooltip">Муууу 🐮</div>
-        <button class="entity-btn tab-size">
-          <span class="btn-label">Корова</span>
-          <span class="btn-emoji">🐮</span>
-        </button>
+        <button class="entity-btn tab-size"><span class="btn-label">Корова</span><span class="btn-emoji">🐮</span></button>
       </div>
-
       <div class="entity-wrap">
         <div class="entity-tooltip"><span class="fa">🦛🍵</span><span class="fb" style="display:none">🍵🦛</span></div>
-        <button class="entity-btn tab-size">
-          <span class="btn-label">Биргамот</span>
-          <span class="btn-emoji">🦛</span>
-        </button>
+        <button class="entity-btn tab-size"><span class="btn-label">Биргамот</span><span class="btn-emoji">🦛</span></button>
       </div>
-
       <div class="entity-wrap">
         <div class="entity-tooltip">Пчол 🐝</div>
-        <button class="entity-btn tab-size">
-          <span class="btn-label">Пчол</span>
-          <span class="btn-emoji">🐝</span>
-        </button>
+        <button class="entity-btn tab-size"><span class="btn-label">Пчол</span><span class="btn-emoji">🐝</span></button>
       </div>
-
     </div>
   </div>
 
@@ -692,10 +601,7 @@
     <div class="entities-grid">
       <div class="entity-wrap">
         <div class="entity-tooltip">🐋🐋🐋</div>
-        <button class="entity-btn tab-size">
-          <span class="btn-label">Шпрот</span>
-          <span class="btn-emoji">🐋</span>
-        </button>
+        <button class="entity-btn tab-size"><span class="btn-label">Шпрот</span><span class="btn-emoji">🐋</span></button>
       </div>
     </div>
   </div>
@@ -721,7 +627,7 @@
       document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
       document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
       document.getElementById('tab-' + tab).classList.add('active');
-      const btn = document.querySelector('[onclick="openTab(\'' + tab + '\',this)"]');
+      const btn = document.querySelector(`[onclick="openTab('${tab}',this)"]`);
       if (btn) btn.classList.add('active');
     }
   }
@@ -752,22 +658,16 @@
     const a = wrap.querySelector('.fa'), b = wrap.querySelector('.fb');
     if (!a || !b) return;
     let iv;
-    wrap.addEventListener('mouseenter', () => {
-      let t = false;
-      iv = setInterval(() => { t=!t; a.style.display=t?'none':'inline'; b.style.display=t?'inline':'none'; }, 650);
-    });
+    wrap.addEventListener('mouseenter', () => { let t=false; iv=setInterval(()=>{t=!t;a.style.display=t?'none':'inline';b.style.display=t?'inline':'none';},650); });
     wrap.addEventListener('mouseleave', () => { clearInterval(iv); a.style.display='inline'; b.style.display='none'; });
   });
 
-  /* биргамот flip — landing orbit */
+  /* биргамот flip — orbit */
   document.querySelectorAll('.orbit-track.t2').forEach(track => {
     const a = track.querySelector('.fa2'), b = track.querySelector('.fb2');
     if (!a || !b) return;
     let iv;
-    track.addEventListener('mouseenter', () => {
-      let t = false;
-      iv = setInterval(() => { t=!t; a.style.display=t?'none':'inline'; b.style.display=t?'inline':'none'; }, 650);
-    });
+    track.addEventListener('mouseenter', () => { let t=false; iv=setInterval(()=>{t=!t;a.style.display=t?'none':'inline';b.style.display=t?'inline':'none';},650); });
     track.addEventListener('mouseleave', () => { clearInterval(iv); a.style.display='inline'; b.style.display='none'; });
   });
 
