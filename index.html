@@ -10,6 +10,12 @@
   <meta property="og:type" content="website"/>
   <meta property="og:title" content="База Wiki"/>
   <meta property="og:url" content="https://zevlakovmaksim753-hub.github.io/-/"/>
+  <!-- iOS-style emoji on all platforms -->
+  <script src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js" crossorigin="anonymous"></script>
+  <style>
+    img.emoji { height: 1em; width: 1em; margin: 0 .05em 0 .1em; vertical-align: -0.1em; display: inline-block; }
+    .btn-emoji img.emoji { height: 1em; width: 1em; margin: 0; vertical-align: middle; }
+  </style>
 
   <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -210,8 +216,9 @@
 
   @keyframes orbitUnspin { to { transform: rotate(-360deg); } }
 
-  .orbit-track:hover,
-  .orbit-track:hover .orbit-slot { animation-play-state: paused; }
+  /* pause ALL orbits when hovering any item */
+  .universe-stage.orbit-paused .orbit-track,
+  .universe-stage.orbit-paused .orbit-slot { animation-play-state: paused; }
   .orbit-track:hover .entity-tooltip { opacity: 1; transform: translateX(-50%) translateY(0); }
 
 
@@ -671,8 +678,22 @@
     track.addEventListener('mouseleave', () => { clearInterval(iv); a.style.display='inline'; b.style.display='none'; });
   });
 
+  /* pause ALL orbits on hover of any track */
+  const stage = document.querySelector('.universe-stage');
+  if (stage) {
+    stage.querySelectorAll('.orbit-track').forEach(track => {
+      track.addEventListener('mouseenter', () => stage.classList.add('orbit-paused'));
+      track.addEventListener('mouseleave', () => stage.classList.remove('orbit-paused'));
+    });
+  }
+
   const saved = localStorage.getItem('base-theme');
   if (saved) setTheme(saved);
+
+  /* apply Twemoji (Twitter/iOS-style emoji) to entire page */
+  if (typeof twemoji !== 'undefined') {
+    twemoji.parse(document.body, { folder: 'svg', ext: '.svg' });
+  }
 </script>
 </body>
 </html>
