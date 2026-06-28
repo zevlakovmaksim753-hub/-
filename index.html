@@ -403,6 +403,35 @@
   .soon-emoji { font-size: 5rem; opacity: .28; }
   .entities-grid { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
 
+  /* ══ COW GALLERY ══ */
+  .cow-gallery {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1rem; width: 100%; max-width: 860px;
+  }
+  .cow-card {
+    display: flex; flex-direction: column; align-items: center; gap: .55rem;
+    cursor: default;
+  }
+  .cow-img {
+    width: 100%; aspect-ratio: 1/1; border-radius: 14px; overflow: hidden;
+    background: var(--surface2); border: 2px solid rgba(245,196,0,.22);
+    transition: border-color .2s, box-shadow .2s, transform .18s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .cow-img img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    border-radius: 12px;
+  }
+  .cow-img.empty::after { content: '🐮'; font-size: 2.5rem; opacity: .3; }
+  .cow-card:hover .cow-img {
+    border-color: var(--accent);
+    box-shadow: 0 0 18px rgba(245,196,0,.3);
+    transform: translateY(-3px);
+  }
+  .cow-caption { font-size: .78rem; font-weight: 700; text-align: center; color: var(--text2); }
+  @media (max-width: 680px) { .cow-gallery { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 360px) { .cow-gallery { grid-template-columns: repeat(2, 1fr); gap: .6rem; } }
+
   /* ══ MOBILE ══ */
   @media (max-width: 900px) {
     .about-inner { flex-direction: column; }
@@ -630,6 +659,10 @@
       <div class="tab-badge" style="background:#4ecdc4">ШП</div>
       <div class="tab-info"><div class="tab-name">Шпрот</div><div class="tab-desc">🐋</div></div>
     </button>
+    <button class="tab-btn" onclick="openTab('korovy',this)">
+      <div class="tab-badge" style="background:#e8884a">КВ</div>
+      <div class="tab-info"><div class="tab-name">Коровы</div><div class="tab-desc">Галерея</div></div>
+    </button>
   </nav>
 
   <div class="tab-content active" id="tab-baza" style="justify-content:flex-start; padding-top:2rem;">
@@ -660,6 +693,25 @@
     <div class="entity-wrap">
       <div class="entity-tooltip">Муууу 🐮</div>
       <button class="entity-btn tab-size"><span class="btn-label">Корова</span><span class="btn-emoji">🐮</span></button>
+    </div>
+    <button class="slide-link" style="font-size:.85rem;padding:.45rem 1.2rem;" onclick="openTab('korovy',document.querySelector('[onclick=\'openTab(\\\'korovy\\\',this)\']'))">Галерея коров →</button>
+  </div>
+
+  <div class="tab-content" id="tab-korovy" style="justify-content:flex-start;padding-top:2rem;">
+    <div class="tab-label" style="margin-bottom:1.5rem;"><h2>Коровы</h2><p>Коллекция образов</p></div>
+    <div class="cow-gallery">
+      <div class="cow-card"><div class="cow-img"><img src="img/cows/sheikh.jpg" alt="Корова-Шейх" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Шейх</div></div>
+      <div class="cow-card"><div class="cow-img"><img src="img/cows/indian.jpg" alt="Корова-Индеец" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Индеец</div></div>
+      <div class="cow-card"><div class="cow-img"><img src="img/cows/student.jpg" alt="Корова-Студент" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Студент</div></div>
+      <div class="cow-card"><div class="cow-img"><img src="img/cows/mcdak.jpg" alt="Корова МакДак" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова МакДак</div></div>
+      <div class="cow-card"><div class="cow-img"><img src="img/cows/propeller.jpg" alt="Корова-Вертолёт" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Вертолёт</div></div>
+      <div class="cow-card"><div class="cow-img"><img src="img/cows/clown.jpg" alt="Корова-Клоун" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Клоун</div></div>
+      <div class="cow-card"><div class="cow-img"><img src="img/cows/banana.jpg" alt="Корова-Бананы" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Бананы</div></div>
+      <div class="cow-card"><div class="cow-img"><img src="img/cows/chef.jpg" alt="Корова-Шеф" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Шеф</div></div>
+      <div class="cow-card"><div class="cow-img"><img src="img/cows/artist.jpg" alt="Корова-Художник" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Художник</div></div>
+      <div class="cow-card"><div class="cow-img"><img src="img/cows/burgerking.jpg" alt="Корова Бургер Кинг" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова Бургер Кинг</div></div>
+      <div class="cow-card"><div class="cow-img"><img src="img/cows/queen.jpg" alt="Корова-Королева" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Королева</div></div>
+      <div class="cow-card"><div class="cow-img"><img src="img/cows/dedmoroz.jpg" alt="Корова Дед Мороз" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова Дед Мороз</div></div>
     </div>
   </div>
 
