@@ -133,12 +133,30 @@
   }
   .about-btn:hover { background: var(--accent-h); box-shadow: 0 0 36px rgba(245,196,0,.6); transform: translateY(-2px); }
   .about-pic {
-    flex-shrink: 0; width: 240px; height: 190px;
+    flex-shrink: 0; width: 240px; height: 210px;
     background: var(--surface2); border: 1px solid var(--border);
-    border-radius: 18px; display: flex; align-items: center;
-    justify-content: center; font-size: 5rem; overflow: hidden; position: relative;
+    border-radius: 18px; display: flex; flex-direction: column;
+    align-items: center; justify-content: space-between;
+    padding: 1rem 1rem .9rem; overflow: hidden; position: relative; gap: .5rem;
   }
-  .about-pic::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 100%, rgba(245,196,0,.1), transparent 70%); }
+  .about-pic::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 100%, rgba(245,196,0,.1), transparent 70%); pointer-events: none; }
+
+  /* slideshow bars */
+  .slide-bars { display: flex; gap: .35rem; width: 100%; position: relative; z-index: 1; }
+  .sbar { flex: 1; height: 5px; border-radius: 99px; background: rgba(245,196,0,.18); cursor: pointer; overflow: hidden; }
+  .sbar-fill { height: 100%; width: 0; border-radius: 99px; background: var(--accent); }
+  .sbar.done .sbar-fill { width: 100%; }
+  @keyframes fillBar { from { width: 0% } to { width: 100% } }
+
+  .slide-emoji { font-size: 4rem; line-height: 1; position: relative; z-index: 1; transition: opacity .2s; }
+  .slide-name  { font-size: .92rem; font-weight: 700; position: relative; z-index: 1; }
+  .slide-link  {
+    font-size: .75rem; font-weight: 700; color: var(--accent);
+    background: rgba(245,196,0,.1); border: 1px solid rgba(245,196,0,.3);
+    border-radius: 8px; padding: .28rem .75rem; cursor: pointer;
+    transition: background .2s; position: relative; z-index: 1;
+  }
+  .slide-link:hover { background: rgba(245,196,0,.22); }
 
   /* ══ UNIVERSE SECTION ══ */
   .uni-section {
@@ -468,7 +486,17 @@
         </ul>
         <button class="about-btn" onclick="enterApp()">Начать без авторизации</button>
       </div>
-      <div class="about-pic">🐮</div>
+      <div class="about-pic">
+        <div class="slide-bars" id="slide-bars">
+          <div class="sbar"><div class="sbar-fill"></div></div>
+          <div class="sbar"><div class="sbar-fill"></div></div>
+          <div class="sbar"><div class="sbar-fill"></div></div>
+          <div class="sbar"><div class="sbar-fill"></div></div>
+        </div>
+        <div class="slide-emoji" id="slide-emoji">🐮</div>
+        <div class="slide-name"  id="slide-name">Корова</div>
+        <button class="slide-link" id="slide-link">Перейти в вики →</button>
+      </div>
     </div>
   </section>
 
@@ -662,6 +690,48 @@
 
 
 <script>
+  /* creature slideshow */
+  const CREATURES = [
+    { emoji:'🐮', name:'Корова',   tab:'korova'   },
+    { emoji:'🦛', name:'Биргамот', tab:'birgamot' },
+    { emoji:'🐝', name:'Пчол',     tab:'pchol'    },
+    { emoji:'🐋', name:'Шпрот',    tab:'shprot'   },
+  ];
+  let slideIdx = 0;
+  const sBarsEl  = document.querySelectorAll('#slide-bars .sbar');
+  const sEmojiEl = document.getElementById('slide-emoji');
+  const sNameEl  = document.getElementById('slide-name');
+  const sLinkEl  = document.getElementById('slide-link');
+
+  function showSlide(idx) {
+    slideIdx = ((idx % CREATURES.length) + CREATURES.length) % CREATURES.length;
+    const c = CREATURES[slideIdx];
+    sEmojiEl.textContent = c.emoji;
+    sNameEl.textContent  = c.name;
+    sLinkEl.onclick = () => enterApp(c.tab);
+
+    sBarsEl.forEach((bar, i) => {
+      bar.classList.remove('done');
+      const fill = bar.querySelector('.sbar-fill');
+      fill.style.animation = 'none';
+      void fill.offsetWidth; /* reflow to restart animation */
+      if (i < slideIdx) {
+        bar.classList.add('done');
+      } else if (i === slideIdx) {
+        fill.style.animation = 'fillBar 4s linear forwards';
+        fill.addEventListener('animationend', () => showSlide(slideIdx + 1), { once: true });
+      } else {
+        fill.style.width = '0%';
+      }
+    });
+    applyEmoji();
+  }
+
+  if (sBarsEl.length) {
+    sBarsEl.forEach((bar, i) => bar.addEventListener('click', () => showSlide(i)));
+    showSlide(0);
+  }
+
   /* stars */
   function makeStars(container, count) {
     for (let i = 0; i < count; i++) {
