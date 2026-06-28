@@ -749,7 +749,7 @@
         </div>
         <div class="entity-wrap">
           <div class="entity-tooltip"><span class="fa">🦛🍵</span><span class="fb" style="display:none">🍵🦛</span></div>
-          <button class="entity-btn tab-size"><span class="btn-label">Биргамот</span><span class="btn-emoji">🦛</span></button>
+          <button class="entity-btn tab-size" onclick="showBirgamot()"><span class="btn-label">Биргамот</span><span class="btn-emoji">🦛</span></button>
         </div>
         <div class="entity-wrap">
           <div class="entity-tooltip">Пчол 🐝</div>
@@ -896,6 +896,83 @@
 
       </div>
     </div>
+
+    <!-- вид 3: вики-страница биргамота -->
+    <div id="silnye-birgamot" style="display:none; flex-direction:column; align-items:center; padding:1.5rem 1rem 3rem; width:100%;">
+      <div style="display:flex; align-items:center; gap:.8rem; align-self:flex-start; margin-bottom:1.8rem;">
+        <button class="slide-link" onclick="hideBirgamot()">← Назад</button>
+      </div>
+
+      <div class="cow-wiki">
+
+        <!-- ГЕРОЙ -->
+        <div class="cow-wiki-hero">
+          <div class="cow-wiki-emoji">🦛</div>
+          <div>
+            <div class="cow-wiki-title">Биргамот</div>
+            <div class="cow-wiki-sub">с англ. <em>Bergamot Hippo</em> &nbsp;·&nbsp; Существо Базы &nbsp;·&nbsp; Категория: Сильные</div>
+          </div>
+        </div>
+
+        <!-- ФОТО -->
+        <div class="cow-gallery" style="grid-template-columns:repeat(2,1fr); margin-bottom:1.8rem;">
+          <div class="cow-card"><div class="cow-img"><img src="img/birgamot/hippo_charge.jpg" alt="Биргамот в атаке"></div><div class="cow-caption">Биргамот в бою</div></div>
+          <div class="cow-card"><div class="cow-img"><img src="img/birgamot/hippo_water.jpg" alt="Биргамот у воды"></div><div class="cow-caption">Биргамот у воды</div></div>
+          <div class="cow-card"><div class="cow-img"><img src="img/birgamot/bergamot_fruit.jpg" alt="Бергамот"></div><div class="cow-caption">Чай Биргамота 🍵</div></div>
+          <div class="cow-card"><div class="cow-img"><img src="img/birgamot/hippo_emoji.jpg" alt="Биргамот эмодзи"></div><div class="cow-caption">Биргамот (Emoji)</div></div>
+        </div>
+
+        <!-- ОБЗОР -->
+        <p><strong>Биргамот</strong> — один из самых уникальных и редких представителей Вселенной Базы. Это <strong>довольно редкий вид</strong>: его не так уж много, и именно поэтому каждый Биргамот — на особом счету. Несмотря на свою мощь, он невероятно дружелюбен и всегда рад новым знакомствам.</p>
+
+        <div class="wiki-callout">
+          <div class="wc-label">🎂 День рождения</div>
+          <strong>23 июня</strong> — официальный день рождения Биргамота. Один день до общего дня рождения коров — так что праздники идут подряд 🎉
+        </div>
+
+        <!-- БЕРГАМОТОВЫЙ ЧАЙ -->
+        <div class="wiki-section-title">🍵 Бергамотовый чай</div>
+        <p>Главная суперспособность Биргамота — его фирменный <strong>бергамотовый чай</strong>. Попивая его, Биргамот <strong>восстанавливает здоровье и силу</strong> в любой ситуации — даже в разгаре битвы. Чай варится из настоящего бергамота и обладает почти магическими свойствами. Именно поэтому Биргамот практически непобедим в долгих сражениях — он просто делает глоток и продолжает.</p>
+
+        <!-- ХАРАКТЕР -->
+        <div class="wiki-section-title">😄 Характер</div>
+        <p>Биргамот — один из самых позитивных и жизнерадостных бегемотов во всей Вселенной Базы. Он <strong>обожает есть</strong> (особенно после боёв), любит общаться, знакомиться с новыми существами и всегда поднимает настроение в компании. Никогда не грустит надолго.</p>
+        <p>При этом он <strong>безгранично предан своим друзьям</strong> — Корове, Пчолу и Изи. Всегда поддержит в трудный момент, даже если это будет стоить ему сил.</p>
+
+        <!-- ДРУЗЬЯ -->
+        <div class="wiki-section-title">🤝 Лучшие друзья</div>
+        <div class="wiki-allies">
+          <span class="wiki-ally">🐮 Корова</span>
+          <span class="wiki-ally">🐝 Пчол</span>
+          <span class="wiki-ally">✨ Изи</span>
+        </div>
+        <p>Биргамот почти лучшие друзья с Пчолом, Коровой и Изи. Их дружба проверена десятками войн и испытаний — они всегда держатся вместе и поддерживают друг друга в любой ситуации.</p>
+
+        <!-- ВРАГИ -->
+        <div class="wiki-section-title">💀 Главный враг — Зубр</div>
+        <div class="wiki-cats">
+          <div class="wiki-cat" style="border-color:rgba(255,80,80,.3);">
+            <div class="wiki-cat-name" style="color:#ff6b6b;">🦬 Зубр — бывший друг, нынешний враг</div>
+            <div class="wiki-cat-desc">Когда-то Биргамот и Зубр были друзьями. Но Зубр начал <strong>относиться к остальным существам как к мусору</strong> — с презрением и высокомерием. Биргамот не смог с этим мириться: для него дружба и уважение — это святое. Они поссорились, и с тех пор стали <strong>врагами</strong>. Биргамот не держит злобы, но назад пути нет.</div>
+          </div>
+        </div>
+
+        <!-- СОЮЗНИКИ -->
+        <div class="wiki-section-title">🛡️ Союзники</div>
+        <div class="wiki-allies">
+          <span class="wiki-ally">🐮 Корова</span>
+          <span class="wiki-ally">🐝 Пчол</span>
+          <span class="wiki-ally">🐋 Шпрот</span>
+          <span class="wiki-ally">✨ Изи</span>
+        </div>
+
+        <!-- ФУТЕР -->
+        <div class="wiki-footer">
+          <div class="wiki-footer-text">Биргамот — редкий, но незаменимый. 🦛🍵</div>
+        </div>
+
+      </div>
+    </div>
   </div>
 
   <div class="tab-content" id="tab-ostalnie">
@@ -990,18 +1067,26 @@
     hideCowGallery();
   }
 
-  function showCowGallery() {
+  function showSilnyeSub(id) {
     document.getElementById('silnye-list').style.display = 'none';
-    const cows = document.getElementById('silnye-cows');
-    cows.style.display = 'flex';
+    ['silnye-cows','silnye-birgamot'].forEach(s => {
+      const el = document.getElementById(s);
+      if (el) el.style.display = 'none';
+    });
+    const el = document.getElementById(id);
+    if (el) el.style.display = 'flex';
   }
-
-  function hideCowGallery() {
-    const list = document.getElementById('silnye-list');
-    const cows = document.getElementById('silnye-cows');
-    if (list) list.style.display = 'contents';
-    if (cows) cows.style.display = 'none';
+  function hideSilnyeSub() {
+    document.getElementById('silnye-list').style.display = 'contents';
+    ['silnye-cows','silnye-birgamot'].forEach(s => {
+      const el = document.getElementById(s);
+      if (el) el.style.display = 'none';
+    });
   }
+  function showCowGallery()  { showSilnyeSub('silnye-cows'); }
+  function hideCowGallery()  { hideSilnyeSub(); }
+  function showBirgamot()    { showSilnyeSub('silnye-birgamot'); }
+  function hideBirgamot()    { hideSilnyeSub(); }
 
   function setTheme(t) {
     document.documentElement.setAttribute('data-theme', t);
