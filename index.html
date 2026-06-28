@@ -403,6 +403,40 @@
   .soon-emoji { font-size: 5rem; opacity: .28; }
   .entities-grid { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
 
+  /* ══ COW WIKI PAGE ══ */
+  .cow-wiki { width: 100%; max-width: 780px; display: flex; flex-direction: column; gap: 0; }
+
+  .cow-wiki-hero { display: flex; align-items: flex-end; gap: 1rem; margin-bottom: 1.6rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--border); }
+  .cow-wiki-emoji { font-size: 4rem; line-height: 1; }
+  .cow-wiki-title { font-size: clamp(1.8rem,4vw,2.8rem); font-weight: 900; line-height: 1.05; }
+  .cow-wiki-sub { font-size: .85rem; color: var(--muted); margin-top: .2rem; letter-spacing: .04em; }
+
+  .cow-wiki p { font-size: .97rem; color: var(--text2); line-height: 1.9; margin-bottom: 1rem; }
+  .cow-wiki strong { color: var(--text); font-weight: 700; }
+
+  .wiki-callout {
+    background: rgba(245,196,0,.07); border-left: 3px solid var(--accent);
+    border-radius: 0 10px 10px 0; padding: .85rem 1.2rem;
+    margin: 1.2rem 0; font-size: .93rem; color: var(--text);
+  }
+  .wiki-callout .wc-label { font-size: .7rem; font-weight: 900; color: var(--accent); letter-spacing: .12em; text-transform: uppercase; margin-bottom: .25rem; }
+
+  .wiki-section-title { font-size: 1.15rem; font-weight: 800; margin: 2rem 0 .9rem; padding-bottom: .5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: .6rem; }
+  .wiki-badge { font-size: .65rem; font-weight: 900; padding: .2rem .55rem; border-radius: 99px; letter-spacing: .06em; text-transform: uppercase; }
+  .wb-emoji { background: rgba(245,196,0,.15); color: var(--accent); border: 1px solid rgba(245,196,0,.3); }
+  .wb-base  { background: rgba(100,200,100,.12); color: #6ecb7a; border: 1px solid rgba(100,200,100,.25); }
+
+  .wiki-cats { display: flex; flex-direction: column; gap: .75rem; margin: .8rem 0 1.4rem; }
+  .wiki-cat { background: var(--surface2); border: 1.5px solid var(--border); border-radius: 13px; padding: .9rem 1.1rem; }
+  .wiki-cat-name { font-size: .95rem; font-weight: 800; margin-bottom: .3rem; display: flex; align-items: center; gap: .5rem; }
+  .wiki-cat-desc { font-size: .87rem; color: var(--text2); line-height: 1.7; }
+
+  .wiki-allies { display: flex; gap: .6rem; flex-wrap: wrap; margin: .6rem 0 1.5rem; }
+  .wiki-ally { background: var(--surface2); border: 1.5px solid rgba(245,196,0,.28); border-radius: 10px; padding: .35rem .9rem; font-size: .85rem; font-weight: 700; }
+
+  .wiki-footer { text-align: center; padding: 2rem 1rem 1rem; border-top: 1px solid var(--border); margin-top: 2rem; }
+  .wiki-footer-text { font-size: 1.1rem; font-weight: 800; color: var(--accent); text-shadow: 0 0 20px rgba(245,196,0,.4); }
+
   /* ══ COW GALLERY ══ */
   .cow-gallery {
     display: grid; grid-template-columns: repeat(4, 1fr);
@@ -698,25 +732,92 @@
         </div>
       </div>
     </div>
-    <!-- вид 2: галерея коров -->
-    <div id="silnye-cows" style="display:none; flex-direction:column; align-items:center; gap:1.5rem; width:100%;">
-      <div style="display:flex; align-items:center; gap:1rem; align-self:flex-start;">
+    <!-- вид 2: вики-страница коровы -->
+    <div id="silnye-cows" style="display:none; flex-direction:column; align-items:center; padding:1.5rem 1rem 3rem; width:100%;">
+      <div style="display:flex; align-items:center; gap:.8rem; align-self:flex-start; margin-bottom:1.8rem;">
         <button class="slide-link" onclick="hideCowGallery()">← Назад</button>
-        <span style="font-size:1.3rem; font-weight:800;">Коровы</span>
       </div>
-      <div class="cow-gallery">
-        <div class="cow-card"><div class="cow-img"><img src="img/cows/sheikh.jpg"     alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Шейх</div></div>
-        <div class="cow-card"><div class="cow-img"><img src="img/cows/indian.jpg"     alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Индеец</div></div>
-        <div class="cow-card"><div class="cow-img"><img src="img/cows/student.jpg"    alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Студент</div></div>
-        <div class="cow-card"><div class="cow-img"><img src="img/cows/mcdak.jpg"      alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова МакДак</div></div>
-        <div class="cow-card"><div class="cow-img"><img src="img/cows/propeller.jpg"  alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Вертолёт</div></div>
-        <div class="cow-card"><div class="cow-img"><img src="img/cows/clown.jpg"      alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Клоун</div></div>
-        <div class="cow-card"><div class="cow-img"><img src="img/cows/banana.jpg"     alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Бананы</div></div>
-        <div class="cow-card"><div class="cow-img"><img src="img/cows/chef.jpg"       alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Шеф</div></div>
-        <div class="cow-card"><div class="cow-img"><img src="img/cows/artist.jpg"     alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Художник</div></div>
-        <div class="cow-card"><div class="cow-img"><img src="img/cows/burgerking.jpg" alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова Бургер Кинг</div></div>
-        <div class="cow-card"><div class="cow-img"><img src="img/cows/queen.jpg"      alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Королева</div></div>
-        <div class="cow-card"><div class="cow-img"><img src="img/cows/dedmoroz.jpg"   alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова Дед Мороз</div></div>
+
+      <div class="cow-wiki">
+        <!-- ГЕРОЙ -->
+        <div class="cow-wiki-hero">
+          <div class="cow-wiki-emoji">🐮</div>
+          <div>
+            <div class="cow-wiki-title">Корова</div>
+            <div class="cow-wiki-sub">с англ. Cow &nbsp;·&nbsp; Существо Базы &nbsp;·&nbsp; Категория: Сильные</div>
+          </div>
+        </div>
+
+        <!-- ОСНОВНОЙ ТЕКСТ -->
+        <p><strong>Коровы</strong> — великие и могущественные существа, чья цивилизация насчитывает буквально миллиарды армий. О коровах знает каждый: настолько огромна и значима их цивилизация во всей Вселенной Базы.</p>
+
+        <div class="wiki-callout">
+          <div class="wc-label">🎂 День рождения</div>
+          <strong>24 июня</strong> — официальный день рождения всех коров без исключения.
+        </div>
+
+        <p>На протяжении всей истории коровы вели жестокие сражения — против людей, враждебных сущностей и других противников. Они <strong>никогда не давали слабины</strong> и сражались за свой народ без остановки. Некоторые пали в бою и не пережили войну — вечная память героям. Но не будем о грустном.</p>
+
+        <p>Общество коров невероятно сложное: у них есть жёны, дети, семьи и целые кланы родственников. Среди коров существуют <strong>философы</strong>, <strong>великие полководцы</strong> и знаменитые личности — такие как <em>Корова-Философ</em> и <em>Корова Степан</em>. Некоторые из них конкурируют между собой, разжигая внутреннее противостояние.</p>
+
+        <!-- КАТЕГОРИИ -->
+        <div class="wiki-section-title">
+          Два вида коров
+        </div>
+        <div class="wiki-cats">
+          <div class="wiki-cat">
+            <div class="wiki-cat-name"><span class="wiki-badge wb-emoji">EMOJI</span> Коровы из Вселенной Базы</div>
+            <div class="wiki-cat-desc">Могучие существа с собственным городом и невероятной силой. Они родом из Вселенной Базы, где правят законы, недоступные обычным коровам. Именно они представлены в галерее ниже.</div>
+          </div>
+          <div class="wiki-cat">
+            <div class="wiki-cat-name"><span class="wiki-badge wb-base">БАЗОВЫЕ</span> Обычные коровы</div>
+            <div class="wiki-cat-desc">Обычная корова как корова. Намного слабее Emoji-коров, но не менее преданы своему народу и тоже дают отпор. Существуют в реальном мире.</div>
+          </div>
+        </div>
+
+        <!-- СОЮЗНИКИ -->
+        <div class="wiki-section-title">Союзники</div>
+        <p>У всех коров есть верные союзники — они дружат и сотрудничают во всех делах, поддерживая друг друга в войнах и мирное время.</p>
+        <div class="wiki-allies">
+          <span class="wiki-ally">🦛 Биргамот</span>
+          <span class="wiki-ally">🐝 Пчол</span>
+          <span class="wiki-ally">🐋 Шпрот</span>
+        </div>
+
+        <!-- ГАЛЕРЕЯ EMOJI -->
+        <div class="wiki-section-title">
+          Галерея &nbsp;<span class="wiki-badge wb-emoji">EMOJI</span>
+        </div>
+        <div class="cow-gallery" style="margin-bottom:2rem;">
+          <div class="cow-card"><div class="cow-img"><img src="img/cows/sheikh.jpg"     alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Шейх</div></div>
+          <div class="cow-card"><div class="cow-img"><img src="img/cows/indian.jpg"     alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Индеец</div></div>
+          <div class="cow-card"><div class="cow-img"><img src="img/cows/student.jpg"    alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Студент</div></div>
+          <div class="cow-card"><div class="cow-img"><img src="img/cows/mcdak.jpg"      alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова МакДак</div></div>
+          <div class="cow-card"><div class="cow-img"><img src="img/cows/propeller.jpg"  alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Вертолёт</div></div>
+          <div class="cow-card"><div class="cow-img"><img src="img/cows/clown.jpg"      alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Клоун</div></div>
+          <div class="cow-card"><div class="cow-img"><img src="img/cows/banana.jpg"     alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Бананы</div></div>
+          <div class="cow-card"><div class="cow-img"><img src="img/cows/chef.jpg"       alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Шеф</div></div>
+          <div class="cow-card"><div class="cow-img"><img src="img/cows/artist.jpg"     alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Художник</div></div>
+          <div class="cow-card"><div class="cow-img"><img src="img/cows/burgerking.jpg" alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова Бургер Кинг</div></div>
+          <div class="cow-card"><div class="cow-img"><img src="img/cows/queen.jpg"      alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Королева</div></div>
+          <div class="cow-card"><div class="cow-img"><img src="img/cows/dedmoroz.jpg"   alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова Дед Мороз</div></div>
+        </div>
+
+        <!-- БАЗОВЫЕ (плейсхолдеры) -->
+        <div class="wiki-section-title">
+          Обычные коровы &nbsp;<span class="wiki-badge wb-base">БАЗОВЫЕ</span>
+        </div>
+        <div class="cow-gallery" style="margin-bottom:1.5rem;">
+          <div class="cow-card"><div class="cow-img empty"></div><div class="cow-caption">Скоро</div></div>
+          <div class="cow-card"><div class="cow-img empty"></div><div class="cow-caption">Скоро</div></div>
+          <div class="cow-card"><div class="cow-img empty"></div><div class="cow-caption">Скоро</div></div>
+          <div class="cow-card"><div class="cow-img empty"></div><div class="cow-caption">Скоро</div></div>
+        </div>
+
+        <!-- ФУТЕР -->
+        <div class="wiki-footer">
+          <div class="wiki-footer-text">Коровы будут всегда в наших сердцах! ❤️</div>
+        </div>
       </div>
     </div>
   </div>
