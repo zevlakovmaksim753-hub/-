@@ -318,21 +318,40 @@
   .theme-btn.dark-btn  { background: #111; }
   .theme-btn.light-btn { background: #eee; }
 
+  .app-exit-btn {
+    padding: .38rem .85rem; font-size: .8rem; font-weight: 600;
+    background: transparent; color: var(--muted);
+    border: 1.5px solid var(--border); border-radius: 9px;
+    cursor: pointer; transition: all .2s; white-space: nowrap;
+  }
+  .app-exit-btn:hover { color: #e06060; border-color: rgba(224,96,96,.5); }
+
   .tabs-nav {
-    display: flex; background: var(--surface); border-bottom: 1px solid var(--border);
-    padding: 0 1.5rem; overflow-x: auto; transition: background .25s;
+    display: flex; gap: .55rem;
+    background: var(--surface); border-bottom: 1px solid var(--border);
+    padding: .75rem 1.5rem; overflow-x: auto; transition: background .25s;
   }
   .tabs-nav::-webkit-scrollbar { display: none; }
   .tab-btn {
-    padding: .85rem 1.3rem; font-size: .88rem; font-weight: 700;
-    background: none; border: none; border-bottom: 2px solid transparent;
-    margin-bottom: -1px; cursor: pointer; color: var(--muted);
-    transition: color .2s, border-color .2s; letter-spacing: .03em; white-space: nowrap;
+    display: flex; align-items: center; gap: .65rem;
+    padding: .5rem .8rem .5rem .55rem;
+    background: var(--surface2); border: 1.5px solid var(--border);
+    border-radius: 13px; cursor: pointer; flex-shrink: 0;
+    transition: border-color .2s, background .2s, box-shadow .2s;
   }
-  .tab-btn:hover { color: var(--text2); }
-  .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
-  .tab-btn.tab-exit { margin-left: auto; font-weight: 600; font-size: .82rem; }
-  .tab-btn.tab-exit:hover { color: #e06060; }
+  .tab-btn:hover { border-color: rgba(245,196,0,.38); background: rgba(245,196,0,.04); }
+  .tab-btn.active { border-color: var(--accent); background: rgba(245,196,0,.07); box-shadow: 0 0 12px rgba(245,196,0,.12); }
+
+  .tab-badge {
+    width: 36px; height: 36px; border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .68rem; font-weight: 900; letter-spacing: .04em;
+    flex-shrink: 0; color: #111;
+  }
+  .tab-info { min-width: 0; text-align: left; }
+  .tab-name { font-size: .86rem; font-weight: 700; color: var(--text); white-space: nowrap; line-height: 1.2; }
+  .tab-desc { font-size: .68rem; color: var(--muted); white-space: nowrap; margin-top: 1px; }
+  .tab-btn.active .tab-name { color: var(--accent); }
 
   .tab-content {
     display: none; padding: 3rem 1.5rem 4rem;
@@ -537,15 +556,27 @@
     <div class="app-bar-r">
       <button class="theme-btn dark-btn active" onclick="setTheme('dark')">🌙</button>
       <button class="theme-btn light-btn"        onclick="setTheme('light')">☀️</button>
+      <button class="app-exit-btn" onclick="exitApp()">← Выйти из Wiki</button>
     </div>
   </header>
 
   <nav class="tabs-nav">
-    <button class="tab-btn active" onclick="openTab('baza',this)">База</button>
-    <button class="tab-btn"        onclick="openTab('bog',this)">Бог</button>
-    <button class="tab-btn"        onclick="openTab('silnye',this)">Сильные</button>
-    <button class="tab-btn"        onclick="openTab('ostalnie',this)">Остальные</button>
-    <button class="tab-btn tab-exit" onclick="exitApp()">← Выйти из Wiki</button>
+    <button class="tab-btn active" onclick="openTab('baza',this)">
+      <div class="tab-badge" style="background:#5b8dee">БА</div>
+      <div class="tab-info"><div class="tab-name">База</div><div class="tab-desc">Основное</div></div>
+    </button>
+    <button class="tab-btn" onclick="openTab('bog',this)">
+      <div class="tab-badge" style="background:#f5c400">БГ</div>
+      <div class="tab-info"><div class="tab-name">Бог</div><div class="tab-desc">Биргапчол</div></div>
+    </button>
+    <button class="tab-btn" onclick="openTab('silnye',this)">
+      <div class="tab-badge" style="background:#ff6060">СЛ</div>
+      <div class="tab-info"><div class="tab-name">Сильные</div><div class="tab-desc">3 существа</div></div>
+    </button>
+    <button class="tab-btn" onclick="openTab('ostalnie',this)">
+      <div class="tab-badge" style="background:#4ecdc4">ОС</div>
+      <div class="tab-info"><div class="tab-name">Остальные</div><div class="tab-desc">Шпрот</div></div>
+    </button>
   </nav>
 
   <div class="tab-content active" id="tab-baza">
