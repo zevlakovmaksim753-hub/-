@@ -502,7 +502,7 @@
         <div class="orbit-slot s1">
           <div class="entity-wrap">
             <div class="entity-tooltip"><span class="fa2">🦛🍵</span><span class="fb2" style="display:none">🍵🦛</span></div>
-            <button class="entity-btn r1btn" onclick="enterApp('silnye')">
+            <button class="entity-btn r1btn" onclick="enterApp('birgamot')">
               <span class="btn-label">Биргамот</span>
               <span class="btn-emoji">🦛</span>
             </button>
@@ -513,7 +513,7 @@
         <div class="orbit-slot s1">
           <div class="entity-wrap">
             <div class="entity-tooltip">Пчол 🐝</div>
-            <button class="entity-btn r1btn" onclick="enterApp('silnye')">
+            <button class="entity-btn r1btn" onclick="enterApp('pchol')">
               <span class="btn-label">Пчол</span>
               <span class="btn-emoji">🐝</span>
             </button>
@@ -526,7 +526,7 @@
         <div class="orbit-slot s2">
           <div class="entity-wrap">
             <div class="entity-tooltip">Муууу 🐮</div>
-            <button class="entity-btn r2btn" onclick="enterApp('silnye')">
+            <button class="entity-btn r2btn" onclick="enterApp('korova')">
               <span class="btn-label">Корова</span>
               <span class="btn-emoji">🐮</span>
             </button>
@@ -539,7 +539,7 @@
         <div class="orbit-slot s3">
           <div class="entity-wrap">
             <div class="entity-tooltip">🐋🐋🐋</div>
-            <button class="entity-btn r3btn" onclick="enterApp('ostalnie')">
+            <button class="entity-btn r3btn" onclick="enterApp('shprot')">
               <span class="btn-label">Шпрот</span>
               <span class="btn-emoji">🐋</span>
             </button>
@@ -586,13 +586,21 @@
       <div class="tab-badge" style="background:#f5c400">БГ</div>
       <div class="tab-info"><div class="tab-name">Бог</div><div class="tab-desc">Биргапчол</div></div>
     </button>
-    <button class="tab-btn" onclick="openTab('silnye',this)">
-      <div class="tab-badge" style="background:#ff6060">СЛ</div>
-      <div class="tab-info"><div class="tab-name">Сильные</div><div class="tab-desc">3 существа</div></div>
+    <button class="tab-btn" onclick="openTab('korova',this)">
+      <div class="tab-badge" style="background:#e8884a">КО</div>
+      <div class="tab-info"><div class="tab-name">Корова</div><div class="tab-desc">🐮</div></div>
     </button>
-    <button class="tab-btn" onclick="openTab('ostalnie',this)">
-      <div class="tab-badge" style="background:#4ecdc4">ОС</div>
-      <div class="tab-info"><div class="tab-name">Остальные</div><div class="tab-desc">Шпрот</div></div>
+    <button class="tab-btn" onclick="openTab('birgamot',this)">
+      <div class="tab-badge" style="background:#5abf7e">БМ</div>
+      <div class="tab-info"><div class="tab-name">Биргамот</div><div class="tab-desc">🦛🍵</div></div>
+    </button>
+    <button class="tab-btn" onclick="openTab('pchol',this)">
+      <div class="tab-badge" style="background:#f0c429">ПЧ</div>
+      <div class="tab-info"><div class="tab-name">Пчол</div><div class="tab-desc">🐝</div></div>
+    </button>
+    <button class="tab-btn" onclick="openTab('shprot',this)">
+      <div class="tab-badge" style="background:#4ecdc4">ШП</div>
+      <div class="tab-info"><div class="tab-name">Шпрот</div><div class="tab-desc">🐋</div></div>
     </button>
   </nav>
 
@@ -619,31 +627,35 @@
     </div>
   </div>
 
-  <div class="tab-content" id="tab-silnye">
-    <div class="tab-label"><h2>Сильные</h2><p>Самые мощные существа</p></div>
-    <div class="entities-grid">
-      <div class="entity-wrap">
-        <div class="entity-tooltip">Муууу 🐮</div>
-        <button class="entity-btn tab-size"><span class="btn-label">Корова</span><span class="btn-emoji">🐮</span></button>
-      </div>
-      <div class="entity-wrap">
-        <div class="entity-tooltip"><span class="fa">🦛🍵</span><span class="fb" style="display:none">🍵🦛</span></div>
-        <button class="entity-btn tab-size"><span class="btn-label">Биргамот</span><span class="btn-emoji">🦛</span></button>
-      </div>
-      <div class="entity-wrap">
-        <div class="entity-tooltip">Пчол 🐝</div>
-        <button class="entity-btn tab-size"><span class="btn-label">Пчол</span><span class="btn-emoji">🐝</span></button>
-      </div>
+  <div class="tab-content" id="tab-korova">
+    <div class="tab-label"><h2>Корова</h2><p>Сильное существо базы</p></div>
+    <div class="entity-wrap">
+      <div class="entity-tooltip">Муууу 🐮</div>
+      <button class="entity-btn tab-size"><span class="btn-label">Корова</span><span class="btn-emoji">🐮</span></button>
     </div>
   </div>
 
-  <div class="tab-content" id="tab-ostalnie">
-    <div class="tab-label"><h2>Остальные</h2><p>Не самые сильные, но тоже важные</p></div>
-    <div class="entities-grid">
-      <div class="entity-wrap">
-        <div class="entity-tooltip">🐋🐋🐋</div>
-        <button class="entity-btn tab-size"><span class="btn-label">Шпрот</span><span class="btn-emoji">🐋</span></button>
-      </div>
+  <div class="tab-content" id="tab-birgamot">
+    <div class="tab-label"><h2>Биргамот</h2><p>Бегемот с зелёным чаем</p></div>
+    <div class="entity-wrap">
+      <div class="entity-tooltip"><span class="fa">🦛🍵</span><span class="fb" style="display:none">🍵🦛</span></div>
+      <button class="entity-btn tab-size"><span class="btn-label">Биргамот</span><span class="btn-emoji">🦛</span></button>
+    </div>
+  </div>
+
+  <div class="tab-content" id="tab-pchol">
+    <div class="tab-label"><h2>Пчол</h2><p>Сильное существо базы</p></div>
+    <div class="entity-wrap">
+      <div class="entity-tooltip">Пчол 🐝</div>
+      <button class="entity-btn tab-size"><span class="btn-label">Пчол</span><span class="btn-emoji">🐝</span></button>
+    </div>
+  </div>
+
+  <div class="tab-content" id="tab-shprot">
+    <div class="tab-label"><h2>Шпрот</h2><p>Существо базы</p></div>
+    <div class="entity-wrap">
+      <div class="entity-tooltip">🐋🐋🐋</div>
+      <button class="entity-btn tab-size"><span class="btn-label">Шпрот</span><span class="btn-emoji">🐋</span></button>
     </div>
   </div>
 </div><!-- /app -->
