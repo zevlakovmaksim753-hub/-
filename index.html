@@ -643,25 +643,13 @@
       <div class="tab-badge" style="background:#f5c400">БГ</div>
       <div class="tab-info"><div class="tab-name">Бог</div><div class="tab-desc">Биргапчол</div></div>
     </button>
-    <button class="tab-btn" onclick="openTab('korova',this)">
-      <div class="tab-badge" style="background:#e8884a">КО</div>
-      <div class="tab-info"><div class="tab-name">Корова</div><div class="tab-desc">🐮</div></div>
+    <button class="tab-btn" onclick="openTab('silnye',this)">
+      <div class="tab-badge" style="background:#ff6060">СЛ</div>
+      <div class="tab-info"><div class="tab-name">Сильные</div><div class="tab-desc">3 существа</div></div>
     </button>
-    <button class="tab-btn" onclick="openTab('birgamot',this)">
-      <div class="tab-badge" style="background:#5abf7e">БМ</div>
-      <div class="tab-info"><div class="tab-name">Биргамот</div><div class="tab-desc">🦛🍵</div></div>
-    </button>
-    <button class="tab-btn" onclick="openTab('pchol',this)">
-      <div class="tab-badge" style="background:#f0c429">ПЧ</div>
-      <div class="tab-info"><div class="tab-name">Пчол</div><div class="tab-desc">🐝</div></div>
-    </button>
-    <button class="tab-btn" onclick="openTab('shprot',this)">
-      <div class="tab-badge" style="background:#4ecdc4">ШП</div>
-      <div class="tab-info"><div class="tab-name">Шпрот</div><div class="tab-desc">🐋</div></div>
-    </button>
-    <button class="tab-btn" onclick="openTab('korovy',this)">
-      <div class="tab-badge" style="background:#e8884a">КВ</div>
-      <div class="tab-info"><div class="tab-name">Коровы</div><div class="tab-desc">Галерея</div></div>
+    <button class="tab-btn" onclick="openTab('ostalnie',this)">
+      <div class="tab-badge" style="background:#4ecdc4">ОС</div>
+      <div class="tab-info"><div class="tab-name">Остальные</div><div class="tab-desc">Шпрот</div></div>
     </button>
   </nav>
 
@@ -688,51 +676,53 @@
     </div>
   </div>
 
-  <div class="tab-content" id="tab-korova">
-    <div class="tab-label"><h2>Корова</h2><p>Сильное существо базы</p></div>
-    <div class="entity-wrap">
-      <div class="entity-tooltip">Муууу 🐮</div>
-      <button class="entity-btn tab-size"><span class="btn-label">Корова</span><span class="btn-emoji">🐮</span></button>
+  <!-- СИЛЬНЫЕ: список существ + под-вид галереи коров -->
+  <div class="tab-content" id="tab-silnye">
+    <!-- вид 1: три кнопки -->
+    <div id="silnye-list" style="display:contents">
+      <div class="tab-label"><h2>Сильные</h2><p>Самые мощные существа</p></div>
+      <div class="entities-grid">
+        <div class="entity-wrap">
+          <div class="entity-tooltip">Муууу 🐮</div>
+          <button class="entity-btn tab-size" onclick="showCowGallery()">
+            <span class="btn-label">Корова</span><span class="btn-emoji">🐮</span>
+          </button>
+        </div>
+        <div class="entity-wrap">
+          <div class="entity-tooltip"><span class="fa">🦛🍵</span><span class="fb" style="display:none">🍵🦛</span></div>
+          <button class="entity-btn tab-size"><span class="btn-label">Биргамот</span><span class="btn-emoji">🦛</span></button>
+        </div>
+        <div class="entity-wrap">
+          <div class="entity-tooltip">Пчол 🐝</div>
+          <button class="entity-btn tab-size"><span class="btn-label">Пчол</span><span class="btn-emoji">🐝</span></button>
+        </div>
+      </div>
     </div>
-    <button class="slide-link" style="font-size:.85rem;padding:.45rem 1.2rem;" onclick="openTab('korovy',document.querySelector('[onclick=\'openTab(\\\'korovy\\\',this)\']'))">Галерея коров →</button>
+    <!-- вид 2: галерея коров -->
+    <div id="silnye-cows" style="display:none; flex-direction:column; align-items:center; gap:1.5rem; width:100%;">
+      <div style="display:flex; align-items:center; gap:1rem; align-self:flex-start;">
+        <button class="slide-link" onclick="hideCowGallery()">← Назад</button>
+        <span style="font-size:1.3rem; font-weight:800;">Коровы</span>
+      </div>
+      <div class="cow-gallery">
+        <div class="cow-card"><div class="cow-img"><img src="img/cows/sheikh.jpg"     alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Шейх</div></div>
+        <div class="cow-card"><div class="cow-img"><img src="img/cows/indian.jpg"     alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Индеец</div></div>
+        <div class="cow-card"><div class="cow-img"><img src="img/cows/student.jpg"    alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Студент</div></div>
+        <div class="cow-card"><div class="cow-img"><img src="img/cows/mcdak.jpg"      alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова МакДак</div></div>
+        <div class="cow-card"><div class="cow-img"><img src="img/cows/propeller.jpg"  alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Вертолёт</div></div>
+        <div class="cow-card"><div class="cow-img"><img src="img/cows/clown.jpg"      alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Клоун</div></div>
+        <div class="cow-card"><div class="cow-img"><img src="img/cows/banana.jpg"     alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Бананы</div></div>
+        <div class="cow-card"><div class="cow-img"><img src="img/cows/chef.jpg"       alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Шеф</div></div>
+        <div class="cow-card"><div class="cow-img"><img src="img/cows/artist.jpg"     alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Художник</div></div>
+        <div class="cow-card"><div class="cow-img"><img src="img/cows/burgerking.jpg" alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова Бургер Кинг</div></div>
+        <div class="cow-card"><div class="cow-img"><img src="img/cows/queen.jpg"      alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Королева</div></div>
+        <div class="cow-card"><div class="cow-img"><img src="img/cows/dedmoroz.jpg"   alt="" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова Дед Мороз</div></div>
+      </div>
+    </div>
   </div>
 
-  <div class="tab-content" id="tab-korovy" style="justify-content:flex-start;padding-top:2rem;">
-    <div class="tab-label" style="margin-bottom:1.5rem;"><h2>Коровы</h2><p>Коллекция образов</p></div>
-    <div class="cow-gallery">
-      <div class="cow-card"><div class="cow-img"><img src="img/cows/sheikh.jpg" alt="Корова-Шейх" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Шейх</div></div>
-      <div class="cow-card"><div class="cow-img"><img src="img/cows/indian.jpg" alt="Корова-Индеец" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Индеец</div></div>
-      <div class="cow-card"><div class="cow-img"><img src="img/cows/student.jpg" alt="Корова-Студент" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Студент</div></div>
-      <div class="cow-card"><div class="cow-img"><img src="img/cows/mcdak.jpg" alt="Корова МакДак" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова МакДак</div></div>
-      <div class="cow-card"><div class="cow-img"><img src="img/cows/propeller.jpg" alt="Корова-Вертолёт" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Вертолёт</div></div>
-      <div class="cow-card"><div class="cow-img"><img src="img/cows/clown.jpg" alt="Корова-Клоун" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Клоун</div></div>
-      <div class="cow-card"><div class="cow-img"><img src="img/cows/banana.jpg" alt="Корова-Бананы" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Бананы</div></div>
-      <div class="cow-card"><div class="cow-img"><img src="img/cows/chef.jpg" alt="Корова-Шеф" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Шеф</div></div>
-      <div class="cow-card"><div class="cow-img"><img src="img/cows/artist.jpg" alt="Корова-Художник" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Художник</div></div>
-      <div class="cow-card"><div class="cow-img"><img src="img/cows/burgerking.jpg" alt="Корова Бургер Кинг" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова Бургер Кинг</div></div>
-      <div class="cow-card"><div class="cow-img"><img src="img/cows/queen.jpg" alt="Корова-Королева" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова-Королева</div></div>
-      <div class="cow-card"><div class="cow-img"><img src="img/cows/dedmoroz.jpg" alt="Корова Дед Мороз" onerror="this.parentElement.classList.add('empty');this.remove()"></div><div class="cow-caption">Корова Дед Мороз</div></div>
-    </div>
-  </div>
-
-  <div class="tab-content" id="tab-birgamot">
-    <div class="tab-label"><h2>Биргамот</h2><p>Бегемот с зелёным чаем</p></div>
-    <div class="entity-wrap">
-      <div class="entity-tooltip"><span class="fa">🦛🍵</span><span class="fb" style="display:none">🍵🦛</span></div>
-      <button class="entity-btn tab-size"><span class="btn-label">Биргамот</span><span class="btn-emoji">🦛</span></button>
-    </div>
-  </div>
-
-  <div class="tab-content" id="tab-pchol">
-    <div class="tab-label"><h2>Пчол</h2><p>Сильное существо базы</p></div>
-    <div class="entity-wrap">
-      <div class="entity-tooltip">Пчол 🐝</div>
-      <button class="entity-btn tab-size"><span class="btn-label">Пчол</span><span class="btn-emoji">🐝</span></button>
-    </div>
-  </div>
-
-  <div class="tab-content" id="tab-shprot">
-    <div class="tab-label"><h2>Шпрот</h2><p>Существо базы</p></div>
+  <div class="tab-content" id="tab-ostalnie">
+    <div class="tab-label"><h2>Остальные</h2><p>Не самые сильные, но тоже важные</p></div>
     <div class="entity-wrap">
       <div class="entity-tooltip">🐋🐋🐋</div>
       <button class="entity-btn tab-size"><span class="btn-label">Шпрот</span><span class="btn-emoji">🐋</span></button>
@@ -820,6 +810,20 @@
     document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
     document.getElementById('tab-' + name).classList.add('active');
     btn.classList.add('active');
+    hideCowGallery();
+  }
+
+  function showCowGallery() {
+    document.getElementById('silnye-list').style.display = 'none';
+    const cows = document.getElementById('silnye-cows');
+    cows.style.display = 'flex';
+  }
+
+  function hideCowGallery() {
+    const list = document.getElementById('silnye-list');
+    const cows = document.getElementById('silnye-cows');
+    if (list) list.style.display = 'contents';
+    if (cows) cows.style.display = 'none';
   }
 
   function setTheme(t) {
