@@ -714,15 +714,15 @@
       bar.classList.remove('done');
       const fill = bar.querySelector('.sbar-fill');
       fill.style.animation = 'none';
-      void fill.offsetWidth; /* reflow to restart animation */
+      fill.style.width = '';   /* clear inline width so CSS class can take over */
+      void fill.offsetWidth;   /* reflow to restart animation */
       if (i < slideIdx) {
         bar.classList.add('done');
       } else if (i === slideIdx) {
         fill.style.animation = 'fillBar 4s linear forwards';
         fill.addEventListener('animationend', () => showSlide(slideIdx + 1), { once: true });
-      } else {
-        fill.style.width = '0%';
       }
+      /* future bars: width stays 0 via CSS default */
     });
     applyEmoji();
   }
