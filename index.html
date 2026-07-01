@@ -122,7 +122,7 @@
     border-radius: 10px; cursor: pointer; white-space: nowrap;
     transition: all .2s;
   }
-  .nav-btn-ghost  { background: transparent; color: var(--muted); border: 1px solid var(--border); cursor: not-allowed; }
+  .nav-btn-ghost  { background: transparent; color: var(--muted); border: 2px solid var(--border); cursor: not-allowed; }
   .nav-btn-ghost .s { font-size: .62rem; background: var(--surface2); color: var(--muted); padding: 1px 6px; border-radius: 99px; margin-left: .3rem; }
   .nav-btn-primary { background: var(--accent); color: #111; border: none; box-shadow: 0 0 14px rgba(245,196,0,.3); }
   .nav-btn-primary:hover { background: var(--accent-h); box-shadow: 0 0 26px rgba(245,196,0,.5); transform: translateY(-1px); }
@@ -388,14 +388,14 @@
 
   .tabs-nav {
     display: flex; gap: .55rem;
-    background: var(--surface); border-bottom: 1px solid var(--border);
+    background: var(--surface); border-bottom: 2px solid var(--border);
     padding: .75rem 1.5rem; overflow-x: auto; transition: background .25s;
   }
   .tabs-nav::-webkit-scrollbar { display: none; }
   .tab-btn {
     display: flex; align-items: center; gap: .65rem;
     padding: .5rem .8rem .5rem .55rem;
-    background: var(--surface2); border: 1.5px solid var(--border);
+    background: var(--surface2); border: 2px solid var(--border);
     border-radius: 13px; cursor: pointer; flex-shrink: 0;
     transition: border-color .2s, background .2s, box-shadow .2s;
   }
@@ -431,7 +431,7 @@
   /* ══ COW WIKI PAGE ══ */
   .cow-wiki { width: 100%; max-width: 780px; display: flex; flex-direction: column; gap: 0; }
 
-  .cow-wiki-hero { display: flex; align-items: flex-end; gap: 1rem; margin-bottom: 1.6rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--border); }
+  .cow-wiki-hero { display: flex; align-items: flex-end; gap: 1rem; margin-bottom: 1.6rem; padding-bottom: 1.2rem; border-bottom: 2px solid var(--border); }
   .cow-wiki-emoji { font-size: 4rem; line-height: 1; }
   .cow-wiki-title { font-size: clamp(1.8rem,4vw,2.8rem); font-weight: 900; line-height: 1.05; }
   .cow-wiki-sub { font-size: .85rem; color: var(--muted); margin-top: .2rem; letter-spacing: .04em; }
@@ -440,24 +440,24 @@
   .cow-wiki strong { color: var(--text); font-weight: 700; }
 
   .wiki-callout {
-    background: rgba(245,196,0,.07); border-left: 3px solid var(--accent);
+    background: rgba(245,196,0,.07); border-left: 4px solid var(--accent);
     border-radius: 0 10px 10px 0; padding: .85rem 1.2rem;
     margin: 1.2rem 0; font-size: .93rem; color: var(--text);
   }
   .wiki-callout .wc-label { font-size: .7rem; font-weight: 900; color: var(--accent); letter-spacing: .12em; text-transform: uppercase; margin-bottom: .25rem; }
 
-  .wiki-section-title { font-size: 1.15rem; font-weight: 800; margin: 2rem 0 .9rem; padding-bottom: .5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: .6rem; }
+  .wiki-section-title { font-size: 1.15rem; font-weight: 800; margin: 2rem 0 .9rem; padding-bottom: .5rem; border-bottom: 2px solid var(--border); display: flex; align-items: center; gap: .6rem; }
   .wiki-badge { font-size: .65rem; font-weight: 900; padding: .2rem .55rem; border-radius: 99px; letter-spacing: .06em; text-transform: uppercase; }
-  .wb-emoji { background: rgba(245,196,0,.15); color: var(--accent); border: 1px solid rgba(245,196,0,.3); }
-  .wb-base  { background: rgba(100,200,100,.12); color: #6ecb7a; border: 1px solid rgba(100,200,100,.25); }
+  .wb-emoji { background: rgba(245,196,0,.15); color: var(--accent); border: 2px solid rgba(245,196,0,.3); }
+  .wb-base  { background: rgba(100,200,100,.12); color: #6ecb7a; border: 2px solid rgba(100,200,100,.25); }
 
   .wiki-cats { display: flex; flex-direction: column; gap: .75rem; margin: .8rem 0 1.4rem; }
-  .wiki-cat { background: var(--surface2); border: 1.5px solid var(--border); border-radius: 13px; padding: .9rem 1.1rem; }
+  .wiki-cat { background: var(--surface2); border: 2px solid var(--border); border-radius: 13px; padding: .9rem 1.1rem; }
   .wiki-cat-name { font-size: .95rem; font-weight: 800; margin-bottom: .3rem; display: flex; align-items: center; gap: .5rem; }
   .wiki-cat-desc { font-size: .87rem; color: var(--text2); line-height: 1.7; }
 
   .wiki-allies { display: flex; gap: .6rem; flex-wrap: wrap; margin: .6rem 0 1.5rem; }
-  .wiki-ally { background: var(--surface2); border: 1.5px solid rgba(245,196,0,.28); border-radius: 10px; padding: .35rem .9rem; font-size: .85rem; font-weight: 700; }
+  .wiki-ally { background: var(--surface2); border: 2px solid rgba(245,196,0,.28); border-radius: 10px; padding: .35rem .9rem; font-size: .85rem; font-weight: 700; }
 
   .wiki-footer { text-align: center; padding: 2rem 1rem 1rem; border-top: 1px solid var(--border); margin-top: 2rem; }
   .wiki-footer-text { font-size: 1.1rem; font-weight: 800; color: var(--accent); text-shadow: 0 0 20px rgba(245,196,0,.4); }
@@ -492,6 +492,13 @@
   @media (max-width: 360px) { .cow-gallery { grid-template-columns: repeat(2, 1fr); gap: .6rem; } }
 
   /* ══ MOBILE ══ */
+  /* ══ iPad: outline-only nav ══ */
+  @media (min-width: 481px) and (max-width: 1100px) {
+    .tab-btn { background: transparent; }
+    .tab-btn:hover { background: rgba(245,196,0,.04); }
+    .tab-btn.active { background: rgba(245,196,0,.07); }
+  }
+
   @media (max-width: 900px) {
     .about-inner { flex-direction: column; }
     .about-pic { width: 100%; max-width: 320px; }
